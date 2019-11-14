@@ -7,14 +7,18 @@ _it is made in JavaScript, Reactjs, Redux, Firebase and Bootstrap_
 **signup page**
 ![signup image](/screenshots/signup.png)
 
-**user profile**
+
+**user profile page**
 ![profile image](/screenshots/profile.png)
+
 
 **dashboard**
 ![dashboard image](/screenshots/dashboard.png)
 
+
 **other users**
 ![user image](/screenshots/user.png)
 
-**notification**
+
+**notifications**
 ![notification image](/screenshots/notification.png)

@@ -1,6 +1,20 @@
-**matcha**
+# matcha #
 
-*this project is underConstruction.*
+## this project is underConstruction. ##
 
-it is made in react, redux, firebase and bootstrap.
-to see the project check project images folder
+_it is made in JavaScript, Reactjs, Redux, Firebase and Bootstrap_
+
+**signup page**
+![signup image](/screenshots/signup.png)
+
+**user profile**
+![profile image](/screenshots/profile.png)
+
+**dashboard**
+![dashboard image](/screenshots/dashboard.png)
+
+**other users**
+![user image](/screenshots/user.png)
+
+**notification**
+![notification image](/screenshots/notification.png)

@@ -2,7 +2,7 @@
 
 ## this project is underConstruction. ##
 
-_it is made in JavaScript, Reactjs, Redux, Firebase and Bootstrap_
+_it is made in JavaScript, React, Redux, Firebase and Bootstrap_
 
 **signup page**
 ![signup image](/screenshots/signup.png)

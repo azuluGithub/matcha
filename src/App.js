@@ -1,6 +1,4 @@
 import React from 'react';
-import Navbar from './components/layout/Navbar';
-import Footer from './components/layout/Footer';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import './index.css';
@@ -13,13 +11,12 @@ import SignIn from './components/auth/SignIn';
 import Forgot from './components/auth/Forgot';
 import Chat from './components/chat/Chat';
 import Profile from './components/profile/Profile';
-import 'jquery/dist/jquery';
+import 'tachyons';
 
 function App() {
   return (
     <BrowserRouter>
       <div>
-          <Navbar />
           <Switch>
             <Route exact path="/" component={Dashboard} />
             <Route path="/news" component={News} />
@@ -30,7 +27,6 @@ function App() {
             <Route path="/chat" component={Chat} />
             <Route path="/profile" component={Profile} />
           </Switch>
-          <Footer />
       </div>
     </BrowserRouter>
   );

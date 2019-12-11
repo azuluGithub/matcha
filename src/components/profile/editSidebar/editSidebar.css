@@ -1,0 +1,201 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.edit-main-bar {
+    display: flex;
+}
+
+.edit-sidebar-container {
+    background-color: lightsalmon;
+}
+
+.sidebar {
+    width: 320px;
+    padding-top: 5px;
+}
+
+.sidebar-icon {
+    padding-top: 20px;
+}
+
+.sidebar-link {
+    padding: 10px;
+}
+
+.sidebar-link:hover {
+    border-right: 5px solid dimgray;
+    background-color: gainsboro;
+}
+
+/********************* edit ********************************************/
+
+.edit-the-main {
+    padding: 0px 5px 0px 5px;
+}
+
+.edit-the-main form {
+    border: 5px solid dimgray;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.edit-the-main form .btn-warning {
+    background-color: gainsboro;
+    border: 1px solid dimgray;
+    color: dimgray;
+}
+
+.edit-heading {
+    color:crimson;
+    padding-left: 100px;
+    font-family: sans-serif,serif;
+    font-size: 15px;
+    font-weight: 900;
+}
+
+.title-edit {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    padding:3px;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.wrong_input {
+    color: red;
+    font-style: oblique;
+    font-size: 14px;
+  }
+
+  .edit_tags {
+    font-size: 13px;
+    font-weight: 900;
+    color: rgb(99, 97, 99);
+  }
+
+.title-filter-tag {
+    font-size: 13px;
+    font-weight: 100px;
+    color: salmon;
+    padding: 2px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    margin-bottom: 1px;
+}
+
+.selectField {
+    height: 20px;
+    padding: 1px;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*
+@media only screen and (max-width: 640px) {
+    
+    .filter-the-main hr, .filter-the-main br {
+        display: none;
+    }
+
+    .filter-the-main {
+        padding: 0px 3px 0px 3px;
+    }
+    
+    .filter-heading {
+        font-size: 14px;
+        font-weight: 400;
+    }
+    
+    .title-filter {
+        font-weight: 200;
+        font-size: 12px;
+        padding:2px;
+    }
+    
+    .all-tags {
+        margin-bottom: 1px;
+    }
+    
+    .title-filter-tag {
+        font-size: 12px;
+        padding: 1px;
+        border-radius: 5px;
+    }
+
+    .range-filter {
+        font-size: 12px;
+    }
+    
+    .filter-range-value {
+        font-size:12px;
+        margin-bottom: 3px;
+    }
+    
+    .inputField {
+        height: 15px;
+        padding: 1px;
+        font-size: 12px;
+        margin-bottom: 3px;
+    }
+}*/
+
+
+/****************************************** content *******************************/
+.main-edit-nav {
+    width: 100%;
+}
+
+.edit-main-div-profile {
+    padding-left: 10px;
+    margin-top: 90px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.edit-main-div-profile .profile-div-center img {
+    width: 320px;
+    height: 380px;
+}
+
+.profile-div-center {
+    font-family: Arial, Helvetica, sans-serif, fantasy;
+    padding: 20px;
+}
+
+.name-centered {
+    color: salmon;
+    text-shadow: 2px 2px #aaa;
+}
+
+.image-upload {
+    margin:10px 0px 10px 0px;
+    font-size: 13px;
+    color: salmon;
+}
+
+.profile-div-bottom {
+    padding: 5px;
+}
+
+.profile-div-bottom  .key{
+    font-weight: 900px;
+    color: rgba(0, 0, 0, 0.9);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.profile-div-bottom  .value{
+    font-weight: 100px;
+    color: rgba(0, 0, 0, 0.6);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*
+@media only screen and (max-width: 640px) {
+    .nuus-profile-page {
+        margin-top: 50px;
+    }
+}*/

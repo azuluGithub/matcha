@@ -30,6 +30,13 @@ const profileReducer = (state = initState, action) => {
                 auth_update_profile_err: "info update successful"
             }
 
+        case 'AGE_INVALID':
+            console.log('Age must be a number');
+            return {
+                ...state,
+                auth_update_profile_err: 'Age must be a number'
+            }
+
         case 'EMPTY_FIELDS':
             console.log("Cannot update empty fields");
             return {

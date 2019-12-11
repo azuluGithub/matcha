@@ -24,6 +24,8 @@ export const createProfile = (profile) => {
 
         if (profile.firstname === "" || profile.lastname ==="" || profile.username ==="" || profile.gender === "" || profile.sexPref ==="" || profile.age ==="" || profile.bio ==="" || profile.tags === "") {
             dispatch({ type:'EMPTY_FIELDS' });
+        } else if (!(Number(profile.age))) {
+            dispatch({ type:'AGE_INVALID' });
         } else {
             firestore.collection('users').doc(user.uid).update({
                 firstname: profile.firstname,
@@ -120,16 +122,12 @@ export const viewUser = (viewer_id, viewer_name, viewer_url, viewed_id, viewed_n
     }
 }
 
-export const likeUser = (liker_id, liker_name, liker_url, liked_id, liked_name, liked_url) => {
-    return (dispatch, getState, { getFirebase , getFirestore }) => {
+export const likeUser = (liker_id, liked_id) => {
+    return (dispatch, { getFirestore }) => {
         const firestore = getFirestore();
         firestore.collection('likes').add({
             liker_id: liker_id,
-            liker_name: liker_name,
-            liker_url: liker_url,
             liked_id: liked_id,
-            liked_name: liked_name,
-            liked_url: liked_url,
             createdAt: new Date(),
         }).then(() => {
             dispatch({ type: "LIKED_SUCCESS"});

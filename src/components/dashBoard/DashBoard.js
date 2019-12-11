@@ -1,13 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Sidebar from '../sidebar/Sidebar';
 import UserProfile from './UserProfile';
-import Filters from './Filters';
+import '../sidebar/sidebar.css';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { Redirect } from 'react-router-dom';
 import { compose } from 'redux';
+import Footer from '../fragements/Footer';
 
-const isSearchSexPref = (sexPref) => (user) => {
-    return !sexPref || user.sexPref.toLowerCase() === sexPref.toLowerCase();
+const isSearchgender = (gender) => (user) => {
+    return !gender || user.gender.toLowerCase() === gender.toLowerCase();
 }
 
 const isSearchedTag = (searchedTag) => (user) => {
@@ -23,25 +25,25 @@ const isSearchedAge = (ageRange) => (userage) => {
 }
 
 const isSearchedPopularity = (popularityRange) => (user) => {
-    return !popularityRange || user.popularity >= popularityRange;
+    return /*!popularityRange ||*/ user.popularity >= popularityRange;
 }
 
-class DashBoard extends Component {
+class DashBoard extends React.Component {
 
     state = {
         users: [],
         searchedTag: "",
         ageRange: "",
         popularityRange: "",
-        sexPref: "",
+        gender: "",
         city: ""
     }
 
     componentWillReceiveProps = (props) => {
-        const my_pref = props.profile.sexPref === "male" ? "female" : "male";
+        //const my_pref = props.profile.sexPref === "male" ? "female" : "male";
         this.setState({
             users: props.users,
-            sexPref: my_pref
+            //sexPref: my_pref
         })
     }
 
@@ -52,43 +54,38 @@ class DashBoard extends Component {
         })
     }
 
-    render() {
-        const { auth } = this.props;
+  render() {    
+    const { auth } = this.props;
         if (!auth.uid) {
             return <Redirect to="/signin"/>
         } else {
-            const { users, searchedTag, sexPref, ageRange, popularityRange, city } = this.state;
+            const { users, searchedTag, gender, ageRange, popularityRange, city } = this.state;
             const { handleChange } = this;
             return (
-                <div className=" dashLayout container-fluid">
-                    <div className="row">
-                        <div className="col-sm-12 col-md-3 dashLeft">
-                            <Filters
-                                handleChange={handleChange}
-                                searchedTag={searchedTag}
-                                ageRange={ageRange}
-                                popularityRange={popularityRange}
-                                sexPref={sexPref}
-                            />
-                        </div>
-                        <div className="col-sm-12 col-md-9 dashRight pre-scrollable">
-                            <div className="gallery">
-                                <UserProfile
-                                    sexPref={sexPref}
-                                    searchedTag={searchedTag}
-                                    ageRange={ageRange}
-                                    popularityRange={popularityRange}
-                                    users={users}
-                                    isSearchedAge={isSearchedAge}
-                                    isSearchSexPref={isSearchSexPref}
-                                    isSearchedPopularity={isSearchedPopularity}
-                                    isSearchedTag={isSearchedTag}
-                                    isSearchedcity={isSearchedcity}
-                                    city={city}
-                                />
-                            </div>
-                        </div>
+                <div>
+                    <div className="main-bar">
+                        <Sidebar
+                            handleChange={handleChange}
+                            searchedTag={searchedTag}
+                            ageRange={ageRange}
+                            popularityRange={popularityRange}
+                            gender={gender}
+                        />
+                        <UserProfile
+                            gender={gender}
+                            searchedTag={searchedTag}
+                            ageRange={ageRange}
+                            popularityRange={popularityRange}
+                            users={users}
+                            isSearchedAge={isSearchedAge}
+                            isSearchgender={isSearchgender}
+                            isSearchedPopularity={isSearchedPopularity}
+                            isSearchedTag={isSearchedTag}
+                            isSearchedcity={isSearchedcity}
+                            city={city}
+                        />
                     </div>
+                    <Footer/>
                 </div>
             )
         }
@@ -111,6 +108,6 @@ const mapStateToProps = (state) => {
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-        { collection: "users"/*, orderBy: ["age", "asc"]*/}
+        { collection: "users"}
     ])
 )(DashBoard);

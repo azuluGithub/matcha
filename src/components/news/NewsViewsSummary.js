@@ -15,22 +15,19 @@ class NewsViewsSummary extends Component {
     render() {
         const { view } = this.props;
         return (
+
             <React.Fragment>
-                <Link  onClick={this.handleClick} to={'/viewuser/'+view.viewer_id}>
-                    <div className="container2 newsCard">
-                        <div className="newsImg">
-                            <img src={view.viewer_url} alt="avatar" style={{width:"60px", height:"60px"}} className="rounded-circle"/>
+                <Link style={{ textDecoration: 'none' }}  onClick={this.handleClick} to={'/viewuser/'+view.viewer_id}>
+                    <div className="nuus-container">
+                        <div className="nuus-img">
+                            <img src={view.viewer_url} alt="img"/>
                         </div>
-                        <div className="newsContent">
-                            <span className="newsMsg" >{ view.viewer_name }, visited your profile</span>
-                            <p className="newsTime">{moment(view.createdAt.toDate()).calendar()}</p>
-                        </div>
-                        <div className="overlay">
-                            <div className="text"></div>
+                        <div className="nuus-content">
+                            <span className="nuus-user" >{ view.viewer_name[0].toUpperCase() + view.viewer_name.slice(1) }, visited your profile</span><br/>
+                            <span className="nuus-time">{moment(view.createdAt.toDate()).calendar()}</span>
                         </div>
                     </div>
                 </Link>
-                <hr />
             </React.Fragment>
         )
     }

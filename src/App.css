@@ -3,13 +3,16 @@
     padding: 0;
 }
 
-.navText {
-    font-size: 15px;
-    font-family: sans-serif;
-}
 
 .footer {
-  color: greenyellow;
+  left: 0;
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  color: crimson;
+  font-family:  serif, fantasy, sans-serif;
 }
 
 .dashLayout, .newsMain {
@@ -87,6 +90,66 @@
   text-align: center;
 }
 
+/*************************** NUUS PAGE ********************/
+.nuus-page {
+  margin: 90px auto;
+  width: 80%;
+}
+
+.nuus-title {
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif, fantasy;
+  font-weight: 900;
+  color: dimgray;
+  margin-bottom: 10px;
+}
+
+.news-ba {
+  width: 100%;
+  background-color: wheat;
+  font-size: 16px;
+  top: 60px;
+  position: fixed;
+  z-index: 200;
+  color: salmon;
+}
+
+.nuus-container {
+  display: flex;
+  margin: 5px;
+  border: 1px solid #eee;
+}
+
+.nuus-container:hover {
+  border-right: 5px solid dimgray;
+  background-color: gainsboro;
+}
+
+.nuus-img img {
+  width: 75px;
+  height: 85px;
+}
+
+.nuus-content {
+  padding: 5px;
+  font-family: sans-serif, serif,Arial, Helvetica;
+}
+
+.nuus-user {
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.7);
+}
+.nuus-time {
+  font-size: 11px;
+  color: gray;
+}
+
+
+
+
+/**********************************************************/
+
+
 .newsTitle {
     font-family: sans-serif;
     color: gray;
@@ -121,12 +184,6 @@
     transform: scale(1.13);
 }*/
 
-.info_name {
-  font-weight: 700;
-  color: black;
-  font-size: 15px;
-}
-
 .thumbs_left {
   padding-left: 10px;;
 }
@@ -145,17 +202,10 @@
   width: 90%;
 }
 
-.info_info {
-  font-weight: 100;
-  color: rgba(0, 0, 0, 0.6);
-  font-family: sans-serif;
-  font-size: 13px;
-}
-
 .tag_info {
   font-weight: 100;
-  color:rgba(94, 23, 116, 0.7);
-  border: 2px solid rgba(0, 0, 0, 0.1);
+  color:rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 2px;
   padding: 1px;
   background: rgba(226, 210, 115, 0.3);
@@ -186,15 +236,43 @@
 }
 
 .img_box {
-    margin: 10px 5px 5px 10px;
-    width: 200px;
+    margin: 0px 0px 30px 30px;
+    /*width: 200px;*/
+    width: 280px;
     background: /*rgb(248, 244, 229)*/ white;
-    border: 2px solid rgb(218, 215, 215);
+    border-left: 1px solid rgb(218, 215, 215);
     transition: all 1.8s ease;
     overflow: hidden;
     position: relative;
-    border-radius: 4px;
+    border-radius: 8px;
+    box-shadow: 5px 5px 3px #888;
+    transition: all .8s ease-in-out;
 }
+
+.img_box:hover {
+  cursor: pointer;
+  transform: scale(1.08);
+}
+
+.centered {
+  position: absolute;
+  top: 80%;
+  left: 10%;
+  color: #fff;
+  font-family: sans-serif;
+}
+
+.info_name {
+  font-weight: 700;
+  font-size: 18px;
+  text-shadow: 0 0 3px dimgray, 0 0 5px gray;
+}
+
+.info_info {
+  font-weight: 100;
+  font-size: 15px;
+}
+
 
 .img_box_info {
   padding: 10px;
@@ -212,7 +290,8 @@
 
 .img_banner img {
     width: 100%;
-    height: 200px;
+    height: 350px;
+    overflow: hidden;
 }
 
 .box_liked {
@@ -250,6 +329,113 @@ hr {
     background: #f2f2f2;
 }
 
+
+/********************************** VUEWED *********************/
+.vuid_user {
+  margin: 90px auto;
+  width: 80%;
+}
+
+.viud_name {
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif, fantasy;
+  font-weight: 900;
+  color: dimgray;
+  margin-bottom: 10px;
+}
+
+.vuid_user img {
+  width: 196px;
+  height: 257px;
+}
+
+.vuid_btns .btn-xs {
+  font-size: 10px;
+  margin: 10px 5px 10px 0px;
+}
+
+.vuid_info {
+  font-family: sans-serif;
+  padding: 5px;
+}
+
+.vuid_info .key {
+  font-size: 14px;
+  font-weight: 100;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.vuid_info .value {
+  font-size: 14px;
+  font-weight: 100;
+  color: rgba(0, 0, 0, 0.5);
+}
+.vuid_tag {
+  font-size: 14px;
+  font-weight: 100;
+  color: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: rgba(226, 210, 115, 0.3);
+  margin: 3px 5px 3px 0px;
+  padding: 3px;
+  border-radius: 3px;
+}
+
+.viud_bio {
+  font-size: 14px;
+  font-weight: 100;
+  color: black;
+}
+.viud_status_value {
+  font-size: 14px;
+  font-weight: 100;
+  color: magenta;
+}
+
+.viud_status_key {
+  font-size: 14px;
+  font-weight: 100;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.vuid_map {
+  padding: 100px;
+  width: 100%;
+  height: 30px;
+}
+
+#dot-loader
+{
+    position: relative;
+    margin: 2rem auto;
+    width: 15rem;
+}
+
+#dot-loader div
+{
+    width: 2.4rem;
+    height: 2.4rem;
+    background: #333;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 100px auto;
+    animation: slideDotLoader 1s infinite;
+}
+
+#dot-loader div:nth-child(1){ animation-delay: .1s; }
+#dot-loader div:nth-child(2){ animation-delay: .2s; }
+#dot-loader div:nth-child(3){ animation-delay: .3s; }
+#dot-loader div:nth-child(4){ animation-delay: .4s; }
+#dot-loader div:nth-child(5){ animation-delay: .5s; }
+
+@keyframes slideDotLoader {
+  0% { transform: scale(1); }
+  50% { opacity: .3; transform: scale(2); }
+  100% { transform: scale(1); }
+}
+/******************************************************************/
+
+
 .viewUser_main_left {
   width: 100%;
   height: 430px;
@@ -266,6 +452,7 @@ hr {
     height: calc(100vh - 120px);
     background:  rgb(248, 244, 229);
 }
+
 .viewUser_left {
   float: left;
   width: 50%;
@@ -275,18 +462,6 @@ hr {
   float: right;
   width: 50%;
   padding-left: 10px;
-}
-
-.viewUser_detail_status {
-  font-size: 14px;
-  font-weight: 100;
-  color: magenta;
-}
-
-.viewUser_details, .viewUser_detail_value {
-  font-size: 14px;
-  font-weight: 100;
-  color: rgba(0, 0, 0, 0.6);
 }
 
 .viewedUser_map {
@@ -306,43 +481,26 @@ hr {
   color:rgba(0, 0, 0, 0.5);
 }
 
-.viewUser_details_liked {
+.viewUser_details_liked, .viewUser_details_Youliked, .viewUser_details_YouMatched {
   font-size: 14px;
   font-weight: 800;
+}
+
+.viewUser_details_liked {
   color: rgb(74, 179, 109);
 }
 
-.viewUser_details_connected {
-  font-size: 14px;
-  font-weight: 800;
+.viewUser_details_Youliked {
+  color: coral;
+}
+
+.viewUser_details_YouMatched {
   color: rgb(185, 156, 77);
-}
-
-.viewUser_tag {
-  font-size: 14px;
-  font-weight: 100;
-  color: rgba(94, 23, 116, 0.7);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  background-color: rgba(226, 210, 115, 0.3);
-  margin: 3px;
-  padding: 3px;
-  border-radius: 3px;
-}
-
-.viewUser_details_bio {
-  font-size: 14px;
-  font-weight: 100;
-  color: black;
 }
 
 .viewedUser_image {
   height: 428px;
   width: 100%;
-}
-
-.viewUser_name {
-  font-size: 18px;
-  font-weight: 900;
 }
 
 .no_profile {
@@ -420,22 +578,49 @@ hr {
     background-size: cover;
 }
 
-.signUpBox {
-    margin-top: 10px;
-    background:  rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    font-family:  sans-serif;
+
+.signup-bg {
+  background-image: url("https://images.vexels.com/media/users/3/130012/isolated/preview/77f5ebe454a2dfb81433f49a93c153cf-dancing-wedding-couple-by-vexels.png"),
+                    url(https://mdn.mozillademos.org/files/11307/bubbles.png),
+                    linear-gradient(to right, palevioletred, rgba(255, 255, 255, 0));
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-position: center, center, right;
+  width: 100%;
+  height: auto;
+}
+
+
+
+.signUpBox .btn-success {
+  background-color: palevioletred;
+  border: 1px solid white;
 }
 
 .signUpBox h2 {
     padding-top: 20px;
     font-weight: 900;
-    color: orange;
+    color: crimson;
+    font-family: 'Courier New', Courier, monospace, sans-serif, Arial, Helvetica;
 }
 
 .matchaMessage {
-  color: greenyellow
+  color: white;
 }
+
+
+
+/*.signup-bg {
+  background-color: pink;
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(palevioletred, pink, palevioletred);
+}*/
+
+.signUpBox {
+    padding: 20px;
+    font-family:  'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 
 .forgotBox h3 {
     padding: 20px;

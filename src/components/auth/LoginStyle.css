@@ -1,0 +1,234 @@
+body {
+    margin: 0 auto;
+}
+
+
+/************************** nav bar ******************************/
+.nav-ba {
+  width: 100%;
+  background-color: white;
+  font-size: 16px;
+  box-shadow: 0 5px 5px -5px salmon;
+  top: 0;
+  position: fixed;
+  z-index: 200;
+}
+
+.nav-ba .logo-matcha {
+  text-shadow: 2px 2px #888;
+}
+
+ul {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  padding: 20px;
+}
+
+li a {
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  font-family: "Source Sans Pro",HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+}
+
+li a:hover {
+  text-decoration: none;
+}
+
+.logo-matcha {
+  font-weight: 600;
+  font-size: 18px;
+  color: red;
+}
+
+@media only screen and (max-width: 600px) {
+    ul {
+        font-size: 13px;
+    }
+    .logo-matcha {
+        font-size: 15px;
+        color: red;
+    }
+    li {
+        padding: 20px 0px 20px 20px;
+    }
+}
+
+/************************************** end of nav bar ************************************/
+
+.main-container {
+    font-size:1em;
+    border:1px solid #eee;
+    border-radius:4px;
+    line-height:2em;
+    text-decoration:none;
+    -webkit-transition: all 0.3s linear;
+     -khtml-transition: all 0.3s linear;
+       -moz-transition: all 0.3s linear;
+         -o-transition: all 0.3s linear;
+            transition: all 0.3s linear;
+}
+
+/********************************************** footer *******************************/
+.foota {
+  left: 0;
+  bottom: 0;
+  box-shadow: 0 -5px 5px -5px salmon;
+  width: 100%;
+  color: salmon;
+  text-align: center;
+  line-height:2em;
+  font-size: 14px;
+  font-family: "Source Sans Pro",HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+}
+
+/************************************************** end of footer ************************/
+
+
+/**************************** L 0 G - I N *************************************************/
+.cover {
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSJOJN08fwCWMq0UOkwkWhwizw_2YiMzs102xgMP_ntFpckwbTM");
+  height: 70vh;
+}
+
+.centered-logo-text, .centered-logo-msg {
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-family: fantasy;
+}
+
+.bottom-cover {
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSbLwCEMS9gs5CfAUShjHXIYjHsPFXptUBf5cRvBu-HMVcmjp90");
+  height: 70vh;
+}
+
+
+.centered-logo-text {
+  top: 40%;
+  left: 50%;
+  font-size: 40px;
+  color: dimgray;
+}
+
+.centered-logo-msg {
+  top: 48%;
+  left: 50%;
+  font-size: 18px;
+  color: palevioletred;
+  font-weight: 100;
+}
+
+@media only screen and (max-width: 600px) {
+    .centered-logo-text {
+        font-size: 18px;
+    }
+    .centered-logo-msg {
+        top: 45%;
+        font-size: 12px;
+    }
+    .main-banner {
+      height: 50vh;
+    }
+    .cover {
+      height: 50vh;
+    }
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 20px;
+    border: none;
+}
+
+.box > img {
+    width: 100%;
+    height: 200px;
+}
+
+@media only screen and (max-width: 600px) {
+    .box > img {
+        height: 300px;
+        padding-bottom: 10px;
+    }
+}
+
+.box {
+    background-color: #fff;
+    padding: 50px;
+    margin: 10px;
+}
+
+.box .names {
+    font-family: fantasy,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+}
+
+.box:hover{
+    -webkit-box-shadow:rgba(0,0,0,0.7) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+     -khtml-box-shadow:rgba(0,0,0,0.7) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+       -moz-box-shadow:rgba(0,0,0,0.7) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+         -o-box-shadow:rgba(0,0,0,0.7) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+            box-shadow:rgba(0,0,0,0.7) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+}
+
+.display-login-error {
+  color: red;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/********************************************  END OF LOGIN *************************************/
+
+/**************** Sign up **********************************/
+
+.signup-container {
+    border: 12px solid  rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.signup-main-container {
+    background-color: #e6e6e6;
+    padding: 100px 50px 50px 50px;
+}
+
+.signup-text-msg {
+    font-size: 28px;
+    color: rgba(0,0,0,0.5);
+    font-family: sans-serif,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande";
+}
+
+.main-style {
+    width: 60%;
+}
+
+@media only screen and (max-width: 600px) {
+    .signup-container {
+        border: 8px solid  rgba(0,0,0,0.8);
+    }
+    .signup-main-container {
+        padding: 100px 10px 30px 10px;
+    }
+    .main-style {
+        width: 100%;
+    }
+    .signup-text-msg {
+        font-size: 20px;
+        padding: 20px 10px 0px 10px;
+    }
+
+}
+
+

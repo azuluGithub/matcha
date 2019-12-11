@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 
 const tagStyle = {
     display: "inline-block",
-    backgroundColor: "rgba(226, 210, 115, 0.3)",
+    backgroundColor: "white",
     fontWeight: "100",
-    color: "rgba(94, 23, 116, 0.7)",
-    padding:"3px",
-    borderRadius: "3px",
+    color: "salmon",
+    padding:"2px",
+    borderRadius: "5px",
     margin: "3px",
-    fontSize: "14px",
-    border: "1px solid rgba(0, 0, 0, 0.1)",
+    fontSize: "13px",
+    border: "1px solid rgba(0, 0, 0, 0.5)",
     cursor: "pointer",
 }
 

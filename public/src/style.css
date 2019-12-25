@@ -1,0 +1,159 @@
+body {
+    margin: 0 auto;
+}
+
+.nav-ba {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #fff;
+  font-size: 16px;
+}
+
+ul {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media only screen and (max-width: 600px) {
+    ul {
+        font-size: 15px;
+    }
+}
+
+li {
+  padding: 20px;
+}
+
+li a {
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  font-family: "Source Sans Pro",HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+}
+
+li a:hover {
+  text-decoration: none;
+}
+
+.logo-matcha {
+  font-weight: 600;
+  font-size: 18px;
+  color: red;
+}
+
+.main-container {
+    font-size:1em;
+    border:1px solid #eee;
+    border-radius:4px;
+    line-height:2em;
+    text-decoration:none;
+    -webkit-transition: all 0.3s linear;
+     -khtml-transition: all 0.3s linear;
+       -moz-transition: all 0.3s linear;
+         -o-transition: all 0.3s linear;
+            transition: all 0.3s linear;
+}
+
+/* Footer*/
+.foota {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+  line-height:2em;
+  background-color: #333;
+  font-family: "Source Sans Pro",HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+}
+
+.cover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  border: none;
+  margin-top: 56px;
+}
+
+.main-banner {
+  height: 70vh;
+}
+
+.centered-logo-text, .centered-logo-msg {
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-family: fantasy;
+}
+
+.centered-logo-text {
+  top: 40%;
+  left: 50%;
+  font-size: 25px;
+}
+
+.centered-logo-msg {
+  top: 48%;
+  left: 50%;
+  font-size: 18px;
+  color: #262626;
+}
+
+@media only screen and (max-width: 600px) {
+    .centered-logo-text {
+        font-size: 20px;
+    }
+    .centered-logo-msg {
+        top: 45%;
+        font-size: 13px;
+    }
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 20px;
+    border: none;
+}
+
+.box > img {
+    width: 100%;
+    height: 200px;
+}
+
+@media only screen and (max-width: 600px) {
+    .box > img {
+        height: 300px;
+        padding-bottom: 10px;
+    }
+}
+
+.box {
+    background-color: #fff;
+    padding: 50px;
+    margin: 10px;
+}
+
+.box .names {
+    font-family: fantasy,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+}
+
+.box:hover{
+    -webkit-box-shadow:rgba(0,0,0,0.7) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+     -khtml-box-shadow:rgba(0,0,0,0.7) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+       -moz-box-shadow:rgba(0,0,0,0.7) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+         -o-box-shadow:rgba(0,0,0,0.7) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+            box-shadow:rgba(0,0,0,0.7) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+}
+
+.display-login-error {
+  color: red;
+  font-size: 14px;
+  font-weight: 600;
+}

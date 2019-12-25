@@ -1,0 +1,163 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+    
+.dash-box {
+    margin-top: 70px;
+}
+
+.sidebar {
+    padding-top: 5px;
+}
+
+.main-filter1 {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100vw;
+    background-color: #d2d2d2;
+    box-shadow: 0 5px 5px -5px dimgray;
+}
+
+.filter-section {
+    width: 24%;
+    padding: 5px 10px 5px 10px;
+}
+
+.filter-section input {
+    height: 26px;
+    padding: 4px;
+    font-size: 13px;
+    margin-bottom: 3px;
+}
+
+.title-filter-tags {
+    margin: 2px;
+    padding: 2px;
+    color: dimgray;
+    background-color: #fff;
+    font-size: 13px;
+    border-radius: 5px;
+    border: 1px solid dimgray;
+}
+
+.main-content-container {
+    margin-top: 20px;
+}
+
+.dash-content-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 640px) {
+    .filter-section {
+        width: 100%;
+    }
+}
+    
+    
+/********************* filter ********************************************/
+    
+
+    
+    .filter-heading {
+        color:crimson;
+        padding-left: 100px;
+        font-family: sans-serif,serif;
+        font-weight: 900;
+    }
+    
+    .title-filter {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 600;
+        font-size: 15px;
+        padding:3px;
+        color: rgba(0, 0, 0, 0.7);
+    }
+    
+    .all-tags {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: 5px;
+    }
+    
+    
+    .filter-the-main {
+        padding: 0px 10px 0px 10px;
+    }
+    
+    .range-filter {
+        font-style: italic;
+        font-size: 13px;
+    }
+    
+    .filter-range-value {
+        font-size:12px;
+        color:purple;
+        font-family: fantasy,'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-weight: 100;
+    }
+    
+
+    /**
+    @media only screen and (max-width: 640px) {
+    
+        
+        /*.sidebar-container {
+            height: 400px
+        }
+    
+        .sidebar {
+            width: 200px;
+        /* padding-top: 5px;
+        }
+    
+        .filter-the-main hr, .filter-the-main br {
+            display: none;
+        }
+    
+        .filter-the-main {
+            padding: 0px 3px 0px 3px;
+        }
+        
+        .filter-heading {
+            font-size: 14px;
+            font-weight: 400;
+        }
+        
+        .title-filter {
+            font-weight: 200;
+            font-size: 12px;
+            padding:2px;
+        }
+        
+        .all-tags {
+            margin-bottom: 1px;
+        }
+        
+        .title-filter-tag {
+            font-size: 12px;
+            padding: 1px;
+            border-radius: 5px;
+        }
+    
+        .range-filter {
+            font-size: 12px;
+        }
+        
+        .filter-range-value {
+            font-size:12px;
+            margin-bottom: 3px;
+        }
+        
+        .inputField {
+            height: 15px;
+            padding: 1px;
+            font-size: 12px;
+            margin-bottom: 3px;
+        }
+    }*/

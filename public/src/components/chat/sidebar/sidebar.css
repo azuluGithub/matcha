@@ -1,0 +1,92 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+    
+.chat-bar {
+    display: flex;
+}
+    
+.matches-bar-container {
+    position: -webkit-sticky;
+    position: sticky;
+    background-color: lightsalmon;
+    top: 0;
+}
+    
+.sidebar {
+    width: 350px;
+    padding-top: 5px;
+}
+    
+    .main-content-container {
+        width: 100%;
+    }
+    
+    .content-container {
+        padding: 30px 0px 0px 30px;
+        position: relative;
+        margin-top: 60px;
+    }
+    
+/********************* filter ********************************************/
+    
+.match-the-main {
+    padding: 0px 5px 0px 5px;
+}
+    
+.match-heading {
+    color:crimson;
+    padding-left: 50px;
+    font-family: sans-serif,serif;
+    font-weight: 900;
+}
+    
+  
+
+    @media only screen and (max-width: 640px) {
+    
+        .sidebar {
+            width: 200px;
+        }
+  
+        .match-heading {
+            font-size: 14px;
+            font-weight: 400;
+        }
+        
+    }
+
+
+
+/*************************** NUUS PAGE ********************/
+
+  
+  .match-container {
+    display: flex;
+    margin: 5px;
+    border: 1px solid #aaa;
+  }
+  
+  .match-container:hover {
+    border-right: 5px solid dimgray;
+    background-color: gainsboro;
+  }
+  
+  .match-img img {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .match-content {
+    padding: 5px;
+  }
+  
+  .match-user {
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  
+  
+  
+  /**********************************************************/

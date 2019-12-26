@@ -13,12 +13,29 @@ import  firebase from '../../../config/fbConfig';
 class Update extends Component {
 
     state = {
-        tags: ""
-    }
+        tags: this.props.profile.tags,
+        invalid_input: "",
+        firstname : this.props.profile.firstname,
+        lastname : this.props.profile.lastname,
+        username : this.props.profile.username,
+        bio: this.props.profile.bio,
+        age: this.props.profile.age,
+        gender: this.props.profile.gender,
+        sexPref: this.props.profile.sexPref,
+        email: this.props.auth.email,
+  }
 
     componentWillReceiveProps = (props) => {
         this.setState({
             tags: props.profile.tags,
+            firstname : props.profile.firstname,
+            lastname : props.profile.lastname,
+            username : props.profile.username,
+            bio: props.profile.bio,
+            age: props.profile.age,
+            gender: props.profile.gender,
+            sexPref: props.profile.sexPref,
+            email: props.auth.email,
         })
     }
 
@@ -95,13 +112,15 @@ class Update extends Component {
     }
 
     render() {
-        const { tags, auth, update_email_err, update_password_err, update_profile_err } = this.props;
-        const { handleEmailSubmit, onKeyUp, invalid_input, handleChange, handleSubmit, handlePasswordSubmit, onDeleteTag } = this;
+        const { tags, invalid_input } = this.state;
+        const { auth, update_email_err, update_password_err, update_profile_err } = this.props;
+        const { handleEmailSubmit, onKeyUp, handleChange, handleSubmit, handlePasswordSubmit, onDeleteTag } = this;
         if (!auth.uid) {
             return (<Redirect to="/signin"/>)
         } else {
             return <div>
                     <Navbar/>
+                    <div className="update-page">
                         <UpdateSummary
                             tags={tags}
                             onDeleteTag={onDeleteTag}
@@ -115,6 +134,7 @@ class Update extends Component {
                             update_password_err = {update_password_err}
                             update_profile_err = {update_profile_err}
                         />
+                    </div>
                     <Footer/>
                 </div>
         }
@@ -122,11 +142,13 @@ class Update extends Component {
 }
 
 const mapStateToProps = (state) => {
-    const auth = state.firebase.auth
+    const auth = state.firebase.auth;
+    const profile = state.firebase.profile;
     const auth_update_email_err = state.profile.auth_update_email_err;
     const auth_update_password_err = state.profile.auth_update_password_err;
     const auth_update_profile_err = state.profile.auth_update_profile_err;
     return {
+        profile: profile,
         auth: auth,
         update_email_err: auth_update_email_err,
         update_password_err: auth_update_password_err,

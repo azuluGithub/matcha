@@ -1,14 +1,20 @@
-export const createChat = (chat) => {
+export const createChat = (sender_message, sender_Id, receiver_Id) => {
     return (dispatch, getState, { getFirebase , getFirestore }) => {
         const firestore = getFirestore();
-        firestore.collection('chats').add({
-            ...chat,
-            createdAt: new Date(),
-        }).then(() => {
-            dispatch({ type: "CREATE_CHAT", chat });
-        }).catch((err) => {
-            dispatch({ type: "CREATE_CHAT_ERR", err });
-        })
+        if (sender_Id === "" || receiver_Id === "") {
+            dispatch({ type:'INVALID_SENDER_OR_RECIPIENT' });
+        } else {
+            firestore.collection('chats').add({
+                sender_message: sender_message,
+                sender_Id: sender_Id,
+                receiver_Id: receiver_Id,
+                createdAt: new Date(),
+            }).then(() => {
+                dispatch({ type: "CREATE_CHAT" });
+            }).catch((err) => {
+                dispatch({ type: "CREATE_CHAT_ERR", err });
+            })
+        }
     }
 }
 
@@ -103,16 +109,12 @@ export const updateUserPassword = (pass) => {
     }
 }
 
-export const viewUser = (viewer_id, viewer_name, viewer_url, viewed_id, viewed_name, viewed_url) => {
+export const viewUser = (viewer_id, viewed_id) => {
     return (dispatch, getState, { getFirebase , getFirestore }) => {
         const firestore = getFirestore();
         firestore.collection('views').add({
             viewer_id: viewer_id,
-            viewer_name: viewer_name,
-            viewer_url: viewer_url,
             viewed_id: viewed_id,
-            viewed_name: viewed_name,
-            viewed_url: viewed_url,
             createdAt: new Date(),
         }).then(() => {
             dispatch({ type: "VIEW_SUCCESS"});
@@ -122,17 +124,36 @@ export const viewUser = (viewer_id, viewer_name, viewer_url, viewed_id, viewed_n
     }
 }
 
-export const likeUser = (liker_id, liked_id) => {
-    return (dispatch, { getFirestore }) => {
+export const likeUser = (liker_id, liked_id, new_popularity) => {
+    return (dispatch, getState, { getFirebase , getFirestore }) => {
         const firestore = getFirestore();
         firestore.collection('likes').add({
             liker_id: liker_id,
             liked_id: liked_id,
             createdAt: new Date(),
         }).then(() => {
+            return firestore.collection('users').doc(liked_id).update({
+                popularity: new_popularity,
+            })
+        }).then(() => {
             dispatch({ type: "LIKED_SUCCESS"});
         }).catch((error) => {
             dispatch({ type: "LIKED_ERROR" });
+        })
+    }
+}
+
+export const matchUser = (liker_id, liked_id) => {
+    return (dispatch, getState, { getFirebase , getFirestore }) => {
+        const firestore = getFirestore();
+        firestore.collection('matches').add({
+            liker_id: liker_id,
+            liked_id: liked_id,
+            createdAt: new Date(),
+        }).then(() => {
+            dispatch({ type: "MATCHED_SUCCESS"});
+        }).catch((error) => {
+            dispatch({ type: "MATCHED_ERROR" });
         })
     }
 }

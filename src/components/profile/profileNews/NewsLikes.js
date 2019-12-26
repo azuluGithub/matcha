@@ -1,10 +1,10 @@
 import React from 'react';
 import NewsLikesSummary from './NewsLikesSummary';
 
-const NewsLikes = ({ my_likes }) => {
+const NewsLikes = ({ users_likes, auth }) => {
     return (
         <div>
-            { my_likes && my_likes.map(like => <NewsLikesSummary key={Math.random() * 100000} like={like}/>) }
+            { users_likes && users_likes.map(user => <NewsLikesSummary key={Math.random() * 100000} auth={auth} user={user}/>) }
         </div>
     )
 }

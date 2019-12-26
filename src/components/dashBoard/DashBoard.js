@@ -6,10 +6,11 @@ import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { Redirect } from 'react-router-dom';
 import { compose } from 'redux';
+import Navbar from '../fragements/Navbar';
 import Footer from '../fragements/Footer';
 
-const isSearchgender = (gender) => (user) => {
-    return !gender || user.gender.toLowerCase() === gender.toLowerCase();
+const isSearchSexPref = (sexPref) => (user) => {
+    return !sexPref || user.gender.toLowerCase() === sexPref.toLowerCase();
 }
 
 const isSearchedTag = (searchedTag) => (user) => {
@@ -35,15 +36,15 @@ class DashBoard extends React.Component {
         searchedTag: "",
         ageRange: "",
         popularityRange: "",
-        gender: "",
+        sexPref: "",
         city: ""
     }
 
     componentWillReceiveProps = (props) => {
-        //const my_pref = props.profile.sexPref === "male" ? "female" : "male";
+        const my_pref = props.profile.sexPref;
         this.setState({
             users: props.users,
-            //sexPref: my_pref
+            sexPref: my_pref
         })
     }
 
@@ -59,35 +60,35 @@ class DashBoard extends React.Component {
         if (!auth.uid) {
             return <Redirect to="/signin"/>
         } else {
-            const { users, searchedTag, gender, ageRange, popularityRange, city } = this.state;
+            const { sexPref, users, searchedTag, /*gender,*/ ageRange, popularityRange, city } = this.state;
             const { handleChange } = this;
-            return (
-                <div>
-                    <div className="main-bar">
+
+            return <div>
+                    <Navbar/>
+                    <div className="dash-box">
                         <Sidebar
                             handleChange={handleChange}
                             searchedTag={searchedTag}
                             ageRange={ageRange}
                             popularityRange={popularityRange}
-                            gender={gender}
+                            sexPref={sexPref}
                         />
                         <UserProfile
-                            gender={gender}
                             searchedTag={searchedTag}
                             ageRange={ageRange}
                             popularityRange={popularityRange}
                             users={users}
                             isSearchedAge={isSearchedAge}
-                            isSearchgender={isSearchgender}
+                            isSearchSexPref={isSearchSexPref}
                             isSearchedPopularity={isSearchedPopularity}
                             isSearchedTag={isSearchedTag}
                             isSearchedcity={isSearchedcity}
                             city={city}
+                            sexPref={sexPref}
                         />
                     </div>
                     <Footer/>
                 </div>
-            )
         }
     }
 }

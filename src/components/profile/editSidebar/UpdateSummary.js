@@ -7,8 +7,8 @@ const containerStyle = {
     borderTop: "none",
     borderLeft: "none",
     borderRight: "none",
-    borderBottom: "none",
-    width:"98%"
+    width: "100%",
+    borderBottom: "1px solid #ccc"
   }
   
   const inputStyle = {
@@ -32,7 +32,7 @@ const containerStyle = {
     
       return<div className="edit-the-main">
           <form className="profile-form"  onSubmit={handleSubmit} >
-            <h5 className="edit-heading">Edit Profile</h5><hr/>
+            <h5 className="profile-heading">Edit Profile</h5>
             <span className="title-edit">Firstname</span><br/>
             <div className="form-group">
                 <input 
@@ -72,8 +72,7 @@ const containerStyle = {
                     <option value="bisexual">Bisexual</option>
                     <option value="female">Female</option>
                     <option value="male">Male</option>
-                </select>
-            <br/>
+            </select>
             <span className="title-edit">Preference</span><br/>
             <select
               className="form-control form-control-sm mb-2"
@@ -84,7 +83,6 @@ const containerStyle = {
               <option value="male">Male</option>
               {/*<option value="bisexual">Bisexual</option>*/}
             </select>
-            <br/>
             <div >
                 <span className="title-edit">Age</span><br/>
                 <input 
@@ -101,15 +99,17 @@ const containerStyle = {
             <div className="wrong_input">{ invalid_input }</div>
             <div style={containerStyle}>
                 { tagz }
-              <input className="form-control" style={inputStyle} onKeyUp={ (e) => onKeyUp(e) } type="text" placeholder="type tag name and press SPACE..." />
+              <input className="form-control" style={inputStyle} onKeyUp={ (e) => onKeyUp(e) } type="text" placeholder="Type tag name and press SPACE..." />
+              <br/>
             </div>
             <div>
+                <br/>
                 <span className="title-edit">Biography</span><br/>
                 <textarea
                     className="form-control"
                     type="text"
                     name="bio"
-                    placeholder="write about yourself..."
+                    placeholder="Write about yourself..."
                     onChange={handleChange}
                 />
             </div><br/>

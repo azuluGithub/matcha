@@ -4,7 +4,7 @@ const tagStyle = {
     display: "inline-block",
     backgroundColor: "white",
     fontWeight: "100",
-    color: "salmon",
+    color: "dimgray",
     padding:"2px",
     borderRadius: "5px",
     margin: "3px",

@@ -1,10 +1,10 @@
 import React from 'react';
 import NewsViewsSummary from './NewsViewsSummary';
 
-const NewsVisits = ({ my_views }) => {
+const NewsVisits = ({ users_views, auth }) => {
     return (
         <div>
-            { my_views && my_views.map(view => <NewsViewsSummary key={Math.random() * 100000} view={view}/>) }
+            { users_views && users_views.map(user => <NewsViewsSummary key={Math.random() * 100000} auth={auth} user={user}/>) }
         </div>
     )
 }

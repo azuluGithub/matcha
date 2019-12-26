@@ -1,21 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import NewsMatchesSummary from './NewsMatchesSummary';
 
-const NewsMatches = () => {
+const NewsMatches = ({ users_matches, auth }) => {
     return (
-        <React.Fragment>
-                <Link style={{ textDecoration: 'none' }}  to="#">
-                    <div className="nuus-container">
-                        <div className="nuus-img">
-                            <img src="" alt="img"/>
-                        </div>
-                        <div className="nuus-content">
-                            <span className="nuus-user" >Arnold , liked your profile</span><br/>
-                            <span className="nuus-time">Today at 2:00pm</span>
-                        </div>
-                    </div>
-                </Link>
-        </React.Fragment>
+        <div>
+            { users_matches && users_matches.map(user => <NewsMatchesSummary key={Math.random() * 100000} auth={auth} user={user}/>) }
+        </div>
     )
 }
 

@@ -10,7 +10,7 @@ const Card = ({ user }) => {
                         <img src={user.url} alt="img"/>
                     </div>
                     <div className="nuus-content">
-                        <span className="nuus-user" > { user.firstname[0].toUpperCase() + user.firstname.slice(1) }</span><br/>
+                        <span className="nuus-name" > { user.firstname[0].toUpperCase() + user.firstname.slice(1) }</span><br/>
                     </div>
                 </div>
             </Link>

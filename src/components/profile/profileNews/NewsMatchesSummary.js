@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-class NewslikesSummary extends Component {
-    
+class NewsMatchesSummary extends Component {
+
     render() {
         const { user } = this.props;
         return (
@@ -13,7 +13,9 @@ class NewslikesSummary extends Component {
                             <img src={user.url} alt="img"/>
                         </div>
                         <div className="nuus-content">
-                            <span className="nuus-user" >{ user.firstname[0].toUpperCase() + user.firstname.slice(1)} { user.lastname[0].toUpperCase() + user.lastname.slice(1) }, liked your profile</span><br/>
+                            <span className="nuus-msg">You matched with </span>
+                            <span className="nuus-name">{ user.firstname[0].toUpperCase() + user.firstname.slice(1)} { user.lastname[0].toUpperCase() + user.lastname.slice(1) } </span>
+                            <br/>
                         </div>
                     </div>
                 </Link>
@@ -22,4 +24,4 @@ class NewslikesSummary extends Component {
     }
 }
 
-export default NewslikesSummary;
+export default NewsMatchesSummary;

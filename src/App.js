@@ -11,7 +11,9 @@ import SignIn from './components/auth/SignIn';
 import Forgot from './components/auth/Forgot';
 import Chat from './components/chat/Chat';
 import Profile from './components/profile/Profile';
+import Update from './components/profile/editSidebar/Update';
 import 'tachyons';
+import ChatList from './components/chat/ChatList';
 
 function App() {
   return (
@@ -25,7 +27,9 @@ function App() {
             <Route path="/signin" component={SignIn} />
             <Route path="/forgot" component={Forgot} />
             <Route path="/chat" component={Chat} />
+            <Route path="/chatlist/:id" component={ChatList} />
             <Route path="/profile" component={Profile} />
+            <Route path="/update/:id" component={Update} />
           </Switch>
       </div>
     </BrowserRouter>

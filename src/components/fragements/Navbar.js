@@ -13,8 +13,8 @@ function Navbar(props) {
             <ul>
                 <li><NavLink className="logo-matcha" to="/">Matcha</NavLink></li>
                 <li>
-                    <NavLink to="/profile">
-                        <img src={props.profile.url} alt="avatar" style={{width:"30px", height:"30px"}} className="rounded-circle"/>
+                    <NavLink to="/profile" className="nav-img">
+                        <img src={props.profile.url} alt="img" className="rounded-circle"/>
                              { } { props.profile.username }
                     </NavLink>
                 </li>

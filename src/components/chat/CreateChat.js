@@ -5,18 +5,14 @@ import { createChat } from '../../store/actions/profileActions';
 class CreateChat extends Component {
 
     state = {
-        senderId: "hkdkdjidjdjfjf+_jdjdj)_", //auth id
-        senderName: "dlonra", //auth name
-        senderUrl: "http://matchedUserImage==", //auth img
-        message: "", //message from input field
-        receiverId: "fjd7890udjdjd0d=fdidfj_", //id from link
+        sender_message: "",
     }
     
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.create_Chat(this.state);
+        this.props.create_Chat(this.state.sender_message, this.props.auth.uid, this.props.matchedUserId);
         this.setState({
-            message : "",
+            sender_message : "",
         })
     }
 
@@ -28,22 +24,18 @@ class CreateChat extends Component {
     }
 
     render() {
-        return (
-            <div className="createChatBox">
+        return <div className="chat-form">
                 <form onSubmit={this.handleSubmit}>
-                    <div className="form-group">
-                        <input onChange={this.handleChange} type="text" className="form-control" value={this.state.message}  name="message" placeholder="Type a message..."  required/>
-                    </div>
-                    <button type="submit" className="btn btn-secondary">Submit</button>
+                    <textarea onChange={this.handleChange} type="text" value={this.state.sender_message}  name="sender_message" placeholder="Write your message here..."  required></textarea>
+                    <button>Send</button>
                 </form>
             </div>
-        )
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        create_Chat: (chat) => dispatch(createChat(chat))
+        create_Chat: (sender_message, sender_Id, receiver_Id) => dispatch(createChat(sender_message, sender_Id, receiver_Id))
     }
 }
 

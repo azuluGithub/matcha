@@ -6,12 +6,12 @@ import { connect } from 'react-redux';
 import { createProfile } from "../../store/actions/profileActions";
 import { updateUserEmail } from "../../store/actions/profileActions";
 import { updateUserPassword } from "../../store/actions/profileActions";
-import EditContent from './editSidebar/EditContent'
-import Sidebar from './editSidebar/Sidebar';
+import EditContent from './editSidebar/EditContent';
 import { Redirect } from 'react-router-dom';
 import Footer from '../fragements/Footer';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
+import Navbar from '../fragements/Navbar';
 
 class Profile extends Component {
   
@@ -123,71 +123,73 @@ class Profile extends Component {
   }
 
   render() {
-    const { lati, long, firstname, lastname, username, email, gender, sexPref, age, bio, tags, url,invalid_input } = this.state;
-    if (!this.props.auth.uid) {
+    const { views, users, auth, likes, matches } = this.props;
+    if (!auth.uid) {
         return <Redirect to="/signin"/>
     } else {
+      if (likes && users && views && matches) {
+        const { lati, long, firstname, lastname, username, email, gender, sexPref, age, bio, tags, url } = this.state;
         return (
-                <div>             
-                    <div className="edit-main-bar">
-                        <Sidebar
+                  <div>
+                    <Navbar/>
+                          <EditContent
+                            firstname={firstname}
+                            lastname={lastname}
+                            username={username}
+                            email={email}
+                            gender={gender}
+                            sexPref={sexPref}
+                            age={age}
+                            bio={bio}
                             tags={tags}
-                            onDeleteTag={this.onDeleteTag}
-                            handleChange={this.handleChange}
-                            handleSubmit={this.handleSubmit}
-                            handlePasswordSubmit={this.handlePasswordSubmit}
-                            handleEmailSubmit={this.handleEmailSubmit}
-                            onKeyUp={this.onKeyUp}
-                            invalid_input={invalid_input}
-                            update_email_err = {this.props.update_email_err}
-                            update_password_err = {this.props.update_password_err}
-                            update_profile_err = {this.props.update_profile_err}
-                        />
-                        <EditContent
-                           firstname={firstname}
-                           lastname={lastname}
-                           username={username}
-                           email={email}
-                           gender={gender}
-                           sexPref={sexPref}
-                           age={age}
-                           bio={bio}
-                           tags={tags}
-                           url={url}
-                           handleImageUpload={this.handleImageUpload}
-                           lati={lati}
-                           long={long}
-                           my_views={this.props.my_views}
-                           my_likes={this.props.my_likes}
-                        />
+                            url={url}
+                            handleImageUpload={this.handleImageUpload}
+                            lati={lati}
+                            long={long}
+                            auth={auth}
+                            views={views}
+                            likes={likes}
+                            users={users}
+                            matches={matches}
+                          />
+                      <Footer/>   
+                  </div>
+                )
+              } else {
+                return (
+                    <div id="dot-loader">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
                     </div>
-                    <Footer/>   
-                </div>
-              );
+                );
+            }
         }
     }
 }
 
-
-
 const mapStateToProps = (state) => {
-  const authId = state.firebase.auth.uid;
+  const auth = state.firebase.auth
   const views = state.firestore.ordered.views;
   const likes = state.firestore.ordered.likes;
-  const filtered_views = views && views.filter(view => {
-      return authId === view.viewer_id
-  })
-  const filtered_likes = likes && likes.filter(like => {
-      return authId === like.liker_id
-  })
+  const matches = state.firestore.ordered.matches;
+  const users = state.firestore.ordered.users;
+  const profile = state.firebase.profile;
+  const auth_update_email_err = state.profile.auth_update_email_err;
+  const auth_update_password_err = state.profile.auth_update_password_err;
+  const auth_update_profile_err = state.profile.auth_update_profile_err;
   return {
-      auth: state.firebase.auth,
-      my_views: filtered_views,
-      my_likes: filtered_likes,
-      profile: state.firebase.profile,
-      update_email_err: state.profile.auth_update_email_err,
-      update_password_err: state.profile.auth_update_password_err,
-      update_profile_err: state.profile.auth_update_profile_err,
+      auth: auth,
+      views: views,
+      likes: likes,
+      matches: matches,
+      users: users,
+      profile: profile,
+      update_email_err: auth_update_email_err,
+      update_password_err: auth_update_password_err,
+      update_profile_err: auth_update_profile_err,
   }
 }
 
@@ -200,11 +202,12 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default compose(
-  connect(mapStateToProps,
-    mapDispatchToProps),
+  connect(mapStateToProps, mapDispatchToProps),
   firestoreConnect([
+    { collection: "users" },
     { collection: "likes", orderBy: ["createdAt", "desc"] },
     { collection: "views", orderBy: ["createdAt", "desc"] },
+    { collection: "matches", orderBy: ["createdAt", "desc"] },
   ])
 ) (Profile);
 

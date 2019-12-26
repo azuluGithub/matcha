@@ -1,50 +1,68 @@
 body {
-        margin: 0;
-        padding: 0;
-        font-family: sans-serif;
-    }
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
     
-    .main-bar {
-        display: flex;
-    }
-    
-    .sidebar-container {
-        position: -webkit-sticky;
-        position: sticky;
-        /*height: 550px;*/
-        background-color: lightsalmon;
-        top: 0;
-    }
-    
-    .sidebar {
-        width: 350px;
-        padding-top: 5px;
-    }
-    
-    .sidebar-link {
-        padding: 10px;
-    }
-    
-    .sidebar-link:hover {
-        border-right: 5px solid dimgray;
-        background-color: gainsboro;
-    }
-    
-    .main-content-container {
+.dash-box {
+    margin-top: 70px;
+}
+
+.main-filter1 {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100vw;
+    background-color: #eee;
+    box-shadow: 0 5px 5px -5px dimgray;
+    padding: 20px 0px 20px 0px;
+}
+
+.filter-section {
+    width: 24%;
+    padding: 5px 10px 5px 10px;
+}
+
+.filter-section input {
+    height: 26px;
+    padding: 4px;
+    font-size: 13px;
+    margin-bottom: 3px;
+    border: 1px solid #ccc;
+}
+
+.title-filter-tags {
+    margin: 2px;
+    padding: 2px;
+    color: dimgray;
+    background-color: #fff;
+    font-size: 13px;
+    border-radius: 5px;
+    border: 1px solid dimgray;
+}
+
+.main-content-container {
+    margin-top: 20px;
+}
+
+.dash-content-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 640px) {
+    .filter-section {
         width: 100%;
     }
-    
-    .content-container {
-        padding: 30px 0px 0px 30px;
-        position: relative;
-        margin-top: 60px;
+    .main-filter1 {
+        padding: 0px ;
     }
+}
     
-    /********************* filter ********************************************/
     
-    .filter-the-main {
-        padding: 0px 5px 0px 5px;
-    }
+/********************* filter ********************************************/
+    
+
     
     .filter-heading {
         color:crimson;
@@ -68,12 +86,6 @@ body {
         margin-bottom: 5px;
     }
     
-    .title-filter-tags {
-        color: salmon;
-        padding: 4px;
-        background-color: wheat;
-        margin-bottom: 5px;
-    }
     
     .filter-the-main {
         padding: 0px 10px 0px 10px;
@@ -89,11 +101,6 @@ body {
         color:purple;
         font-family: fantasy,'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         font-weight: 100;
-    }
-    
-    .inputField {
-        padding: 5px;
-        font-family: sans-serif, Arial, Helvetica;
     }
     
 

@@ -48,6 +48,10 @@ const profileReducer = (state = initState, action) => {
             console.log('error encountered while updating info', action.error);
             return state;
 
+        case 'INVALID_SENDER_OR_RECIPIENT':
+            console.log('invalid sender or recipient');
+            return state;
+
         case 'EMAIL_UPDATE_SUCCESS':
             console.log('email updated successfully');
             return {
@@ -91,7 +95,7 @@ const profileReducer = (state = initState, action) => {
             }
 
         case 'CREATE_CHAT':
-            console.log('chat created', action.chat);
+            console.log('chat created');
             return state;
 
         case 'CREATE_CHAT_ERR':

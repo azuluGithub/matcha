@@ -3,6 +3,16 @@
     padding: 0;
 }
 
+/*&***************************** scollbar **********************/
+
+.my_scrollable {
+  height: 300px;
+  overflow-y: scroll;
+  background-color: #fff;
+  padding: 10px 0px 10px 0px;
+}
+
+/******************************** e O scrollbar ***********************/
 
 .footer {
   left: 0;
@@ -90,6 +100,22 @@
   text-align: center;
 }
 
+/************************** MATCHES PAGE ******************/
+
+.matches-page {
+  margin: 90px auto;
+  width: 80%;
+}
+
+.matched_name {
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif, fantasy;
+  font-weight: 900;
+  color: dimgray;
+  margin-bottom: 10px;
+}
+
+
 /*************************** NUUS PAGE ********************/
 .nuus-page {
   margin: 90px auto;
@@ -116,8 +142,12 @@
 
 .nuus-container {
   display: flex;
-  margin: 5px;
   border: 1px solid #eee;
+}
+
+.nav-item {
+  font-size: 15px;
+  color: #000;
 }
 
 .nuus-container:hover {
@@ -126,19 +156,27 @@
 }
 
 .nuus-img img {
-  width: 75px;
-  height: 85px;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  padding: 5px;
 }
 
 .nuus-content {
   padding: 5px;
-  font-family: sans-serif, serif,Arial, Helvetica;
 }
 
-.nuus-user {
-  font-size: 15px;
-  color: rgba(0, 0, 0, 0.7);
+.nuus-name {
+  font-size: 13px;
+  color: #111;
+  font-weight: bold;
 }
+
+.nuus-msg {
+  font-size: 13px;
+  color: #333;
+}
+
 .nuus-time {
   font-size: 11px;
   color: gray;
@@ -238,7 +276,7 @@
 .img_box {
     margin: 0px 0px 30px 30px;
     /*width: 200px;*/
-    width: 280px;
+    width: 260px;
     background: /*rgb(248, 244, 229)*/ white;
     border-left: 1px solid rgb(218, 215, 215);
     transition: all 1.8s ease;
@@ -337,10 +375,9 @@ hr {
 }
 
 .viud_name {
-  font-size: 20px;
+  font-size: 18px;
   font-family: Arial, Helvetica, sans-serif, fantasy;
-  font-weight: 900;
-  color: dimgray;
+  font-weight: 700;
   margin-bottom: 10px;
 }
 
@@ -349,26 +386,34 @@ hr {
   height: 257px;
 }
 
+.vuid_btns {
+  background-color: gainsboro;
+  box-shadow: 0 -5px 5px -5px dimgray;
+}
+
 .vuid_btns .btn-xs {
   font-size: 10px;
-  margin: 10px 5px 10px 0px;
+  margin: 5px;
 }
 
 .vuid_info {
   font-family: sans-serif;
-  padding: 5px;
+  padding: 20px;
+  background-color: #eee;
+  margin-bottom: 10px;
+  box-shadow: 0 -5px 5px -5px dimgray;
 }
 
 .vuid_info .key {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 100;
   color: rgba(0, 0, 0, 0.9);
 }
 
 .vuid_info .value {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 100;
-  color: rgba(0, 0, 0, 0.5);
+  color: maroon;
 }
 .vuid_tag {
   font-size: 14px;
@@ -678,22 +723,6 @@ hr {
     margin-right:0;
   }
   
-  /* Style time text */
-  .time-right {
-    float: right;
-    color: #aaa;
-  }
-  
-  /* Style time text */
-  .time-left {
-    float: left;
-    color: #999;
-  }
-
-
-
-
-
 
 /* News hover */
 

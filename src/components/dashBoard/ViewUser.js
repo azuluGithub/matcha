@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
-import { likeUser } from '../../store/actions/profileActions';
+import { likeUser, matchUser } from '../../store/actions/profileActions';
 import Navbar from '../fragements/Navbar';
 import Footer from '../fragements/Footer';
 import User from './User';
@@ -13,11 +13,18 @@ const whoLiked = (liker_id, liked_id) => (like) => {
 }
 
 class ViewUser extends Component {
-
     handleLike = (e) => {
         e.preventDefault();
-        const { auth, uid } = this.props;
-        this.props.likeUser(auth.uid, uid);
+        const { auth, uid, likes, profile } = this.props;
+        let new_popularity = ++profile.popularity;
+        const wasILiked = likes.filter(whoLiked(uid, auth.uid));
+
+        if (wasILiked.length > 0) {
+            this.props.likeUser(auth.uid, uid, new_popularity);
+            this.props.matchUser(auth.uid, uid);
+        } else {
+            this.props.likeUser(auth.uid, uid, new_popularity);
+        }
     }
 
     render() {
@@ -44,7 +51,8 @@ class ViewUser extends Component {
 
 const mapDispatchToProps = (dispath) => {
     return {
-        likeUser: (liker_id, liked_id) => dispath(likeUser(liker_id, liked_id))
+        likeUser: (liker_id, liked_id, new_popularity) => dispath(likeUser(liker_id, liked_id, new_popularity)),
+        matchUser: (liker_id, liked_id) => dispath(matchUser(liker_id, liked_id))
     }
 }
 

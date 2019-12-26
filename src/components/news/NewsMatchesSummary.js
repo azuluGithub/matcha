@@ -13,7 +13,9 @@ class NewsMatchesSummary extends Component {
                             <img src={user.url} alt="img"/>
                         </div>
                         <div className="nuus-content">
-                            <span className="nuus-user" >{ "You" } matched with { user.firstname[0].toUpperCase() + user.firstname.slice(1) }</span><br/>
+                            <span className="nuus-msg">You matched with </span>
+                            <span className="nuus-name">{ user.firstname[0].toUpperCase() + user.firstname.slice(1)} { user.lastname[0].toUpperCase() + user.lastname.slice(1) } </span>
+                            <br/>
                         </div>
                     </div>
                 </Link>

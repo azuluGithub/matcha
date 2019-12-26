@@ -1,9 +1,9 @@
 import React from 'react';
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FaArrowCircleRight, FaArrowCircleLeft } from "react-icons/fa";
 
 const SidebarIcon = ({handleClick, isOpen}) => {
   return <span onClick={handleClick}>
-    {isOpen ? <FaTimes /> : <FaBars/>}
+    {isOpen ? <FaArrowCircleLeft /> : <FaArrowCircleRight/>}
   </span>
 }
 

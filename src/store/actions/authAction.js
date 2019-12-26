@@ -17,6 +17,7 @@ export const signIn = (credentials) => {
         });
     }
 }
+
 export const resetPassword = (emailAddress) => {
     return (dispatch, getState, {getFirebase}) => {
         const firebase = getFirebase();

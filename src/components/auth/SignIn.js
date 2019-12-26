@@ -39,10 +39,8 @@ class SignIn extends Component {
                 <div>
                     <Nav/>
                     <div className="cover">
-                        <div className="centered">
-                            <span className="centered-logo-text">Matcha Online Dating</span>
-                            <span className="centered-logo-msg">Find Your perfect Match with us!!</span>
-                        </div>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSJOJN08fwCWMq0UOkwkWhwizw_2YiMzs102xgMP_ntFpckwbTM" alt="main-banner" style={{width:"100%"}}/>
+                        <div className="centered-logo-text">Matcha Online Dating</div>
                     </div>
                     {/**CSS GRID*/}
                     <div className="grid-container main-container">
@@ -81,30 +79,27 @@ class SignIn extends Component {
                     </div>
 
                     <div className="bottom-cover">
-                        <main className="pa4 b--black black-80">
-                            <form className="measure center" onSubmit={this.handleSubmit}>
-                                <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-                                <legend className="f4 fw6 ph0 mh0">Sign In</legend>
-                                <div className="mt3">
-                                    <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
-                                    <input  onChange={this.handleChange} value={this.state.email} className="pa2 input-reset ba bg-transparent  w-100" type="email" name="email"  id="email-address"/>
+                        <div className="signin-form">
+                            <form  onSubmit={this.handleSubmit}>
+                                <h2>Sign In</h2>
+                                <div className="form-group">
+                                    <label for="email">Email address</label>
+                                    <input type="email" name="email"  onChange={this.handleChange} class="form-control" placeholder="Enter email"/>
                                 </div>
-                                <div className="mv3">
-                                    <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
-                                    <input  onChange={this.handleChange} value={this.state.password} className="b pa2 input-reset ba bg-transparent  w-100" type="password" name="password"  id="password"/>
+                                <div class="form-group">
+                                    <label for="pwd">Password</label>
+                                    <input type="password" name="password" onChange={this.handleChange} class="form-control" placeholder="Enter password"/>
                                 </div>
-                                </fieldset>
-                                <div className="">
-                                    <input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Sign in"/>
-                                </div>
+                                <button type="submit" className="btn btn-primary">Submit</button>
                                 <div className="display-login-error">
                                     {
                                         display_login_error
                                     }
                                 </div>
                             </form>
-                        </main>
+                        </div>
                     </div>
+
                     <Footer/>
             </div>
             )

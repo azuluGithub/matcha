@@ -6,7 +6,7 @@ const Card = ({ user }) => {
         <React.Fragment>
             <Link style={{ textDecoration: 'none' }} to={'/chatlist/'+user.id}>
                 <div className="nuus-container">
-                    <div className="nuus-img">
+                    <div className="chat-img">
                         <img src={user.url} alt="img"/>
                     </div>
                     <div className="nuus-content">

@@ -18,6 +18,10 @@ body {
   height: 30px;
 }
 
+.nav-name {
+  font-size: 15px;
+}
+
 .nav-ba .logo-matcha {
   text-shadow: 2px 2px #888;
 }

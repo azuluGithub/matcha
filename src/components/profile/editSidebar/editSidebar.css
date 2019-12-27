@@ -58,7 +58,7 @@ body {
     margin-top: 15px;
     border: 1px solid maroon;
     color: maroon;
-    padding: 0px 10px 0px 10px;
+    padding: 1px 10px 0px 10px;
     border-radius: 20px;
 }
 
@@ -140,7 +140,7 @@ body {
 /********************* edit ********************************************/
 
 .edit-the-main {
-    background-color: gainsboro;
+    background-color:#eee;
 }
 
 .edit-the-main form {

@@ -162,6 +162,13 @@
   padding: 5px;
 }
 
+.chat-img img {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  padding: 5px;
+}
+
 .nuus-content {
   padding: 5px;
 }

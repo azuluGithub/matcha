@@ -15,7 +15,7 @@ function Navbar(props) {
                 <li>
                     <NavLink to="/profile" className="nav-img">
                         <img src={props.profile.url} alt="img" className="rounded-circle"/>
-                             { } { props.profile.username }
+                        <span className="nav-name">     { } { props.profile.username }</span>
                     </NavLink>
                 </li>
                 <li>

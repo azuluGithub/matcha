@@ -78,7 +78,6 @@ body {
     justify-content: space-evenly;
     background-color: #eee;
     margin-bottom: 10px;
-    border-bottom: 2px solid rgb(223, 217, 217);
 }
 
 .logged_info {
@@ -103,7 +102,7 @@ body {
     font-weight: 900;
     color: dimgray;
     margin-bottom: 10px;
-  }
+}
 
 .visit-history {
     padding: 20px;

@@ -143,6 +143,25 @@ export const likeUser = (liker_id, liked_id, new_popularity) => {
     }
 }
 
+export const unLikeUser = (unLiker_id, unLiked_id, delete_id, delete_match_id) => {
+    return (dispatch, getState, { getFirebase , getFirestore }) => {
+        const firestore = getFirestore();
+        firestore.collection('unLikes').add({
+            unLiker_id: unLiker_id,
+            unLiked_id: unLiked_id,
+            createdAt: new Date(),
+        }).then(() => {
+            firestore.collection("likes").doc(delete_id).delete()
+        }).then(() => {
+            firestore.collection("matches").doc(delete_match_id).delete()
+        }).then(() => {
+            dispatch({ type: "UNLIKED_SUCCESS"});
+        }).catch((error) => {
+            dispatch({ type: "UNLIKED_ERROR" });
+        })
+    }
+}
+
 export const matchUser = (liker_id, liked_id) => {
     return (dispatch, getState, { getFirebase , getFirestore }) => {
         const firestore = getFirestore();
@@ -154,6 +173,21 @@ export const matchUser = (liker_id, liked_id) => {
             dispatch({ type: "MATCHED_SUCCESS"});
         }).catch((error) => {
             dispatch({ type: "MATCHED_ERROR" });
+        })
+    }
+}
+
+export const blockUser = (blocker_id, blocked_id) => {
+    return (dispatch, getState, { getFirebase , getFirestore }) => {
+        const firestore = getFirestore();
+        firestore.collection('blocks').add({
+            blocker_id: blocker_id,
+            blocked_id: blocked_id,
+            createdAt: new Date(),
+        }).then(() => {
+            dispatch({ type: "BLOCKED_SUCCESS"});
+        }).catch((error) => {
+            dispatch({ type: "BLOCKED_ERROR" });
         })
     }
 }

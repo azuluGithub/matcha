@@ -4,13 +4,7 @@ import 'firebase/auth';
 import 'firebase/storage';
 
 var firebaseConfig = {
-    apiKey: "******************************************",
-    authDomain: "#####################################",
-    databaseURL: "################################",
-    projectId: "wwwwwWWWWWWwwwwwwwwwwwwwwwwwww",
-    storageBucket: "####################",
-    messagingSenderId: "#########################",
-    appId: "#####################################"
+    apiKey: "**********************************",
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);

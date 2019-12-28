@@ -69,9 +69,10 @@ const containerStyle = {
                     onChange={handleChange}
                     name="gender"
                 >
-                    <option value="bisexual">Bisexual</option>
-                    <option value="female">Female</option>
-                    <option value="male">Male</option>
+                  <option value="">Choose...</option>
+                  <option value="bisexual">Bisexual</option>
+                  <option value="female">Female</option>
+                  <option value="male">Male</option>
             </select>
             <span className="title-edit">Preference</span><br/>
             <select
@@ -79,6 +80,7 @@ const containerStyle = {
               onChange={handleChange}
               name="sexPref"
             >
+              <option value="">Choose...</option>
               <option value="female">Female</option>
               <option value="male">Male</option>
               {/*<option value="bisexual">Bisexual</option>*/}

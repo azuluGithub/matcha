@@ -9,6 +9,10 @@ const didIView = (viewer_id, viewed_id) => (view) => {
   return view.viewer_id === viewer_id && view.viewed_id === viewed_id;
 }
 
+const iBlocked = (blocker_id, blocked_id) => (block) => {
+  return block.blocker_id === blocker_id && block.blocked_id === blocked_id;
+}
+
 class Content extends Component {
   
   handleClick = (e) => {
@@ -23,7 +27,12 @@ class Content extends Component {
   }
 
   render() {
-    const { user } = this.props;
+    const { user, blocks, auth } = this.props;
+    if (blocks) {
+    const didIBlock = blocks.filter(iBlocked(auth.uid, user.id));
+    if (didIBlock.length > 0) {
+      return <div></div>
+    } else {
           return <div className="float-left" key={user.id}>
           <div className="img_box">
             <Link  onClick={this.handleClick} to={'/viewuser/'+user.id}>
@@ -41,7 +50,11 @@ class Content extends Component {
             </Link>
         </div>
     </div>
+        }
+      } else {
+      return <div></div>
     }
+  }
 }
 
 const mapDispatchToProps = (dispath) => {
@@ -52,15 +65,17 @@ const mapDispatchToProps = (dispath) => {
 
 const mapStateToProps = (state) => {
   return {
-      auth: state.firebase.auth,
-      profile: state.firebase.profile,
-      views: state.firestore.ordered.views
+    blocks: state.firestore.ordered.blocks,
+    auth: state.firebase.auth,
+    profile: state.firebase.profile,
+    views: state.firestore.ordered.views
   }
 }
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   firestoreConnect([
-      { collection: "views" }
+      { collection: "views" },
+      { collection: "blocks"}
   ])
 )(Content);

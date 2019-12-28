@@ -23,6 +23,22 @@ const profileReducer = (state = initState, action) => {
             console.log('like failed');
             return state;
 
+        case 'UNLIKED_SUCCESS':
+            console.log('unliked successfully');
+            return state;
+        
+        case 'UNLIKED_ERROR':
+            console.log('unlike failed');
+            return state;
+
+        case 'BLOCKED_SUCCESS':
+            console.log('blocked successfully');
+            return state;
+            
+        case 'BLOCKED_ERROR':
+            console.log('blocked failed');
+            return state;
+
         case 'INFO_UPDATE_SUCCESS':
             console.log('user info updated successfully');
             return {

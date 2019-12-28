@@ -44,7 +44,7 @@ class DashBoard extends React.Component {
         const my_pref = props.profile.sexPref;
         this.setState({
             users: props.users,
-            sexPref: my_pref
+            sexPref: my_pref,
         })
     }
 
@@ -62,7 +62,6 @@ class DashBoard extends React.Component {
         } else {
             const { sexPref, users, searchedTag, /*gender,*/ ageRange, popularityRange, city } = this.state;
             const { handleChange } = this;
-
             return <div>
                     <Navbar/>
                     <div className="dash-box">
@@ -109,6 +108,6 @@ const mapStateToProps = (state) => {
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-        { collection: "users"}
+        { collection: "users"},
     ])
 )(DashBoard);

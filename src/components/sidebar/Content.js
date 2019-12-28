@@ -29,10 +29,10 @@ class Content extends Component {
   render() {
     const { user, blocks, auth } = this.props;
     if (blocks) {
-    const didIBlock = blocks.filter(iBlocked(auth.uid, user.id));
-    if (didIBlock.length > 0) {
-      return <div></div>
-    } else {
+      const didIBlock = blocks.filter(iBlocked(auth.uid, user.id));
+      if (didIBlock.length > 0) {
+        return <div></div>
+      } else {
           return <div className="float-left" key={user.id}>
           <div className="img_box">
             <Link  onClick={this.handleClick} to={'/viewuser/'+user.id}>

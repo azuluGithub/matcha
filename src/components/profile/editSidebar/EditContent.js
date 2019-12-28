@@ -6,6 +6,10 @@ import NewsLikes from '../profileNews/NewsLikes';
 import ScrollBar from '../../../ScrollBar';
 import { Link } from 'react-router-dom';
 
+const iBlocked = (blocker_id, blocked_id) => (block) => {
+    return block.blocker_id === blocker_id && block.blocked_id === blocked_id;
+}
+
 const likeFunc = (likes, users, auth_id) => {
     const listOfLikers = [];
     for (let i = 0; i < likes.length; i++) {
@@ -50,7 +54,7 @@ const likeFunc = (likes, users, auth_id) => {
 
 class EditContent extends Component {
   render() {
-    let { auth, likes, matches, views, users, tags, lati, long, handleImageUpload, url, bio, gender, sexPref, age, firstname, lastname, username, email } = this.props;
+    let { blocks, auth, likes, matches, views, users, tags, lati, long, handleImageUpload, url, bio, gender, sexPref, age, firstname, lastname, username, email } = this.props;
     const users_likes = likeFunc(likes, users, auth.uid);
     const users_views = viewFunc(views, users, auth.uid);
     const users_matches = matchesFunc(matches, users, auth.uid);
@@ -104,13 +108,13 @@ class EditContent extends Component {
                     <ScrollBar>
                         <div className="tab-content" id="nav-tabContent">
                             <div className="tab-pane fade show active" id="nav-visit" role="tabpanel" aria-labelledby="nav-visit-tab">
-                                <NewsVisits users_views={users_views} auth={auth}/>
+                                <NewsVisits blocks={blocks} iBlocked={iBlocked} users_views={users_views} auth={auth}/>
                             </div>
                             <div className="tab-pane fade" id="nav-like" role="tabpanel" aria-labelledby="nav-like-tab ">
-                                <NewsLikes users_likes={users_likes} auth={auth}/>
+                                <NewsLikes blocks={blocks} iBlocked={iBlocked} users_likes={users_likes} auth={auth}/>
                             </div>
                             <div className="tab-pane fade" id="nav-match" role="tabpanel" aria-labelledby="nav-match-tab">
-                                <NewsMatches users_matches={users_matches} auth={auth} />
+                                <NewsMatches blocks={blocks} iBlocked={iBlocked} users_matches={users_matches} auth={auth} />
                             </div>
                         </div>
                     </ScrollBar>

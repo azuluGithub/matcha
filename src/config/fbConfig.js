@@ -4,7 +4,7 @@ import 'firebase/auth';
 import 'firebase/storage';
 
 var firebaseConfig = {
-    apiKey: "**********************************",
+    apiKey: "********************************",
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);

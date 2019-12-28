@@ -5,12 +5,29 @@ import ViewUserMap from './ViewUserMap';
 
 class User extends React.Component {
 
+    state = {
+        show: false  
+    };
+
+    reportPopUp = () => {
+        this.setState({
+            show: true
+        })
+    }
+
+    closeReportPopUp = () => {
+        this.setState({
+            show: false
+        })
+    }
+
     render() {
         const { profile, handleLike, handleBlock, handleUnLike, whoLiked, likes, unLikes, liker_id, liked_id } = this.props;
         if (profile && likes && unLikes) {
             const status_value = profile.loggedIn ? "Online" :  moment(profile.time.toDate()).calendar();
             const didILike = likes.filter(whoLiked(liker_id, liked_id));
             const wasILiked = likes.filter(whoLiked(liked_id, liker_id));
+            console.log(this.state.show)
             return (
                 <div className="vuid_user" >
                     <span className="viud_name">{ profile.firstname[0].toUpperCase() + profile.firstname.slice(1)} { profile.lastname[0].toUpperCase() + profile.lastname.slice(1) } </span><br/>
@@ -22,7 +39,16 @@ class User extends React.Component {
                         }
                         <button type="button" onClick={handleUnLike} className="btn btn-xs btn-primary"><FaThumbsDown /> UNLIKE</button>
                         <button type="button" onClick={handleBlock} className="btn btn-xs btn-danger"><FaUserAltSlash /> BLOCK</button>
-                        <button type="button" className="btn btn-xs btn-warning "><FaPhoneVolume /> REPORT</button>
+                        <button type="button" onClick={this.reportPopUp} className="btn btn-xs btn-warning "><FaPhoneVolume /> REPORT</button>
+                        {
+                            this.state.show === true ? <div id="myModal" className="modal">
+                                <div className="modal-content">
+                                    <span onClick={this.closeReportPopUp} className="close">&times;</span>
+                                    <p>You reported this account as a fake account. Further investigation will be done by Matcha Team</p>
+                                </div>
+                            </div>
+                            : ""
+                        }
                     </div>
                     <div className="vuid_info">
                         <span className="key">gender: </span><span className="value">{ profile.gender }</span><br/>

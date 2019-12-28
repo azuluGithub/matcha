@@ -14,7 +14,6 @@ body {
     width: 100vw;
     background-color: #eee;
     box-shadow: 0 5px 5px -5px dimgray;
-    padding: 20px 0px 20px 0px;
 }
 
 .filter-section {
@@ -53,9 +52,6 @@ body {
 @media only screen and (max-width: 640px) {
     .filter-section {
         width: 100%;
-    }
-    .main-filter1 {
-        padding: 0px ;
     }
 }
     

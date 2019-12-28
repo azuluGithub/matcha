@@ -9,6 +9,10 @@ import NewsMatches from './NewsMatches';
 import NewsVisits from './NewsVisits';
 import NewsLikes from './NewsLikes';
 
+const iBlocked = (blocker_id, blocked_id) => (block) => {
+    return block.blocker_id === blocker_id && block.blocked_id === blocked_id;
+}
+
 const likeFunc = (likes, users, auth_id) => {
     const listOfLikers = [];
     for (let i = 0; i < likes.length; i++) {
@@ -54,12 +58,12 @@ const matchesFunc = (matches, users, auth_id) => {
 class News extends Component {
 
     render () {
-        const { auth, views, users, likes, matches } = this.props;
+        const { auth, views, users, likes, matches, blocks } = this.props;
         
         if (!auth.uid) {
             return ( <Redirect to="/signin"/> )
         } else {
-            if (likes && users && auth && matches) {
+            if (likes && users && auth && matches && blocks) {
                 const users_likes = likeFunc(likes, users, auth.uid);
                 const users_views = viewFunc(views, users, auth.uid);
                 const users_matches = matchesFunc(matches, users, auth.uid);
@@ -77,13 +81,13 @@ class News extends Component {
                             </nav>
                             <div className="tab-content" id="nav-tabContent">
                                 <div className="tab-pane fade show active" id="nav-visit" role="tabpanel" aria-labelledby="nav-visit-tab">
-                                    <NewsVisits users_views={users_views} auth={auth} />
+                                    <NewsVisits blocks={blocks} iBlocked={iBlocked} users_views={users_views} auth={auth} />
                                 </div>
                                 <div className="tab-pane fade" id="nav-like" role="tabpanel" aria-labelledby="nav-like-tab ">
-                                    <NewsLikes users_likes={users_likes} auth={auth}/>
+                                    <NewsLikes blocks={blocks} iBlocked={iBlocked} users_likes={users_likes} auth={auth}/>
                                 </div>
                                 <div className="tab-pane fade" id="nav-match" role="tabpanel" aria-labelledby="nav-match-tab">
-                                    <NewsMatches users_matches={users_matches} auth={auth} />
+                                    <NewsMatches blocks={blocks} iBlocked={iBlocked} users_matches={users_matches} auth={auth} />
                                 </div>
                             </div>
                         </div>
@@ -107,12 +111,14 @@ class News extends Component {
 
 const mapStateToProps = (state) => {
     const auth = state.firebase.auth;
+    const blocks = state.firestore.ordered.blocks;
     const views = state.firestore.ordered.views;
     const users = state.firestore.ordered.users;
     const likes = state.firestore.ordered.likes;
     const matches = state.firestore.ordered.matches;
     return {
         auth: auth,
+        blocks: blocks,
         users: users,
         views: views,
         matches: matches,
@@ -124,6 +130,7 @@ export default compose(
     connect(mapStateToProps),
     firestoreConnect([
         { collection: "users" },
+        { collection: "blocks"},
         { collection: "views", orderBy: ["createdAt", "desc"] },
         { collection: "matches", orderBy: ["createdAt", "desc"] },
         { collection: "likes", orderBy: ["createdAt", "desc"] }

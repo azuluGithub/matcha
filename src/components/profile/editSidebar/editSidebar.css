@@ -82,7 +82,9 @@ body {
 
 .logged_info {
     font-family: sans-serif;
-    padding: 20px;
+    width: 100%;
+    padding: 0px 20px 0px 20px;
+    margin-top: 20px;
 }
 
 .logged_info .key {
@@ -108,6 +110,7 @@ body {
     padding: 20px;
     background-color: #fff;
     margin: 10px;
+    width: 50%;
 }
 
 .edit-main-bar {
@@ -140,12 +143,14 @@ body {
 
 .edit-the-main {
     background-color:#eee;
+    width: 50%;
 }
 
 .edit-the-main form {
     border: 5px solid dimgray;
     padding: 20px 10px;
     margin-bottom: 5px;
+    
 }
 
 .edit-the-main form input {
@@ -211,6 +216,23 @@ body {
     padding: 1px;
     font-size: 14px;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+@media only screen and (max-width: 640px) {
+    .edit-the-main {
+        width: 90%;
+    }
+    .logged_info {
+        margin-top: 10px;
+        padding: 10px 10px 0px 10px;
+    }
+    .visit-history {
+        width: 100%;
+    }
+    .logged-name {
+        left: 60%;
+        transform: translate(-50%, -50%);
+    }
 }
 
 /*

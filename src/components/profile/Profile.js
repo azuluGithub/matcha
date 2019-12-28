@@ -123,11 +123,11 @@ class Profile extends Component {
   }
 
   render() {
-    const { views, users, auth, likes, matches } = this.props;
+    const { views, users, auth, likes, blocks, matches } = this.props;
     if (!auth.uid) {
         return <Redirect to="/signin"/>
     } else {
-      if (likes && users && views && matches) {
+      if (likes && users && views && matches && blocks) {
         const { lati, long, firstname, lastname, username, email, gender, sexPref, age, bio, tags, url } = this.state;
         return (
                   <div>
@@ -151,6 +151,7 @@ class Profile extends Component {
                             likes={likes}
                             users={users}
                             matches={matches}
+                            blocks={blocks}
                           />
                       <Footer/>   
                   </div>
@@ -177,11 +178,13 @@ const mapStateToProps = (state) => {
   const matches = state.firestore.ordered.matches;
   const users = state.firestore.ordered.users;
   const profile = state.firebase.profile;
+  const blocks = state.firestore.ordered.blocks;
   const auth_update_email_err = state.profile.auth_update_email_err;
   const auth_update_password_err = state.profile.auth_update_password_err;
   const auth_update_profile_err = state.profile.auth_update_profile_err;
   return {
       auth: auth,
+      blocks: blocks,
       views: views,
       likes: likes,
       matches: matches,
@@ -205,6 +208,7 @@ export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   firestoreConnect([
     { collection: "users" },
+    { collection: "blocks"},
     { collection: "likes", orderBy: ["createdAt", "desc"] },
     { collection: "views", orderBy: ["createdAt", "desc"] },
     { collection: "matches", orderBy: ["createdAt", "desc"] },

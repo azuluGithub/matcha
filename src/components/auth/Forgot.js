@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { resetPassword } from '../../store/actions/authAction';
+import Nav from './Nav';
 
 class Forgot extends Component {
 
@@ -22,36 +23,36 @@ class Forgot extends Component {
     }
 
     render() {
-        const { auth } = this.props;
+        const { auth_reset_email_error, auth } = this.props;
+        const display_auth_reset_email_error = auth_reset_email_error ? auth_reset_email_error : "";
         if (auth.emailVerified && auth.uid) {
             return <Redirect to="/"/>
         } else {
-            return (
-                <div className="container-fluid defaultBackground">
-                    <div className="row">
-                        <div className="col-xs-12 col-sm-4 col-md-4"></div>
-                            <div className="col-xs-12 col-sm-8 col-md-4">
-                            <div className="forgotBox text-center">
+            return <div className="forgot-cover">
+                    <Nav/>
+                        <div className="forms-cover">
+                            <div className="forms-container">
                                 <form onSubmit={this.handleSubmit}>
-                                    <h3><strong>Reset Password</strong></h3>
-                                        <div className="form-group">
-                                            <input onChange={this.handleChange} type="text" className="form-control"  name="email" placeholder="Enter Email..."  required/>
-                                        </div>
-                                        <button type="submit" className="btn btn-block btn-success">Submit</button>
-                                    </form>
-                                </div>
+                                    <h4>Reset Password</h4>
+                                    <div className="form-group">
+                                        <input onChange={this.handleChange} type="text" className="form-control"  name="email" placeholder="Enter Email..."  required/>
+                                    </div>
+                                    <button type="submit" className="btn btn-block btn-success">Submit</button>
+                                    <div className="display-form-error">
+                                        { display_auth_reset_email_error }
+                                    </div>
+                                </form>
                             </div>
-                        <div className="col-xs-12 col-md-4"></div>
-                    </div>   
+                        </div>
                 </div>
-            )
         }
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
+        auth_reset_email_error: state.auth.auth_reset_email_error
     }
 }
 

@@ -3,10 +3,22 @@ body {
 }
 
 /************************** nav bar ******************************/
+
+.navba {
+  width: 100%;
+  background-color: white;
+  font-size: 15px;
+  box-shadow: 0 5px 5px -5px dimgray;
+}
+
+.navba .logo-matcha {
+  text-shadow: 2px 2px #888;
+}
+
 .nav-ba {
   width: 100%;
   background-color: white;
-  font-size: 16px;
+  font-size: 15px;
   box-shadow: 0 5px 5px -5px dimgray;
   top: 0;
   position: fixed;
@@ -90,6 +102,7 @@ li a:hover {
   text-align: center;
   line-height:2em;
   font-size: 14px;
+  background-color: #fff;
   font-family: "Source Sans Pro",HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
 }
 
@@ -98,14 +111,13 @@ li a:hover {
 
 /**************************** L 0 G - I N *************************************************/
 .cover {
-  margin-top: 56px;
   position: relative;
   text-align: center;
-  height: calc(100vh - 56px);
+  height: 70vh;
 }
 
 .cover img {
-  height: calc(100vh - 56px);
+  height: 70vh;
 }
 
 .centered-logo-text {
@@ -119,21 +131,108 @@ li a:hover {
 }
 
 .bottom-cover {
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSbLwCEMS9gs5CfAUShjHXIYjHsPFXptUBf5cRvBu-HMVcmjp90");
-  height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  background:
+  radial-gradient(circle closest-side at 60% 43%, #b03 26%, rgba(187,0,51,0) 27%),
+  radial-gradient(circle closest-side at 40% 43%, #b03 26%, rgba(187,0,51,0) 27%),
+  radial-gradient(circle closest-side at 40% 22%, #d35 45%, rgba(221,51,85,0) 46%),
+  radial-gradient(circle closest-side at 60% 22%, #d35 45%, rgba(221,51,85,0) 46%),
+  radial-gradient(circle closest-side at 50% 35%, #d35 30%, rgba(221,51,85,0) 31%),
+
+  radial-gradient(circle closest-side at 60% 43%, #b03 26%, rgba(187,0,51,0) 27%) 50px 50px,
+  radial-gradient(circle closest-side at 40% 43%, #b03 26%, rgba(187,0,51,0) 27%) 50px 50px,
+  radial-gradient(circle closest-side at 40% 22%, #d35 45%, rgba(221,51,85,0) 46%) 50px 50px,
+  radial-gradient(circle closest-side at 60% 22%, #d35 45%, rgba(221,51,85,0) 46%) 50px 50px,
+  radial-gradient(circle closest-side at 50% 35%, #d35 30%, rgba(221,51,85,0) 31%) 50px 50px;
+  background-color:#b03;
+  background-size:100px 100px;
+}
+
+.signup-cover, .forgot-cover {
+	background:
+  radial-gradient(circle closest-side at 60% 43%, #b03 26%, rgba(187,0,51,0) 27%),
+  radial-gradient(circle closest-side at 40% 43%, #b03 26%, rgba(187,0,51,0) 27%),
+  radial-gradient(circle closest-side at 40% 22%, #d35 45%, rgba(221,51,85,0) 46%),
+  radial-gradient(circle closest-side at 60% 22%, #d35 45%, rgba(221,51,85,0) 46%),
+  radial-gradient(circle closest-side at 50% 35%, #d35 30%, rgba(221,51,85,0) 31%),
+
+  radial-gradient(circle closest-side at 60% 43%, #b03 26%, rgba(187,0,51,0) 27%) 50px 50px,
+  radial-gradient(circle closest-side at 40% 43%, #b03 26%, rgba(187,0,51,0) 27%) 50px 50px,
+  radial-gradient(circle closest-side at 40% 22%, #d35 45%, rgba(221,51,85,0) 46%) 50px 50px,
+  radial-gradient(circle closest-side at 60% 22%, #d35 45%, rgba(221,51,85,0) 46%) 50px 50px,
+  radial-gradient(circle closest-side at 50% 35%, #d35 30%, rgba(221,51,85,0) 31%) 50px 50px;
+  background-color:#b03;
+  background-size:100px 100px;
+	width: 100%;
+}
+
+.msg-signup {
+  color: dimgray;
+}
+
+.forgot-cover {
+	height: 100vh;
+}
+
+.form-forgot {
+  margin-top: 50px;
+}
+
+.forms-cover {
   display: flex;
   justify-content: center;
 }
 
+.forms-container {
+  width: 50%;
+  margin: 40px 0px 40px 0px;
+  padding: 20px;
+  background-color: whitesmoke;
+}
+ 
+
+.signin-content-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.signin_img_box {
+  margin: 20px;
+  width: 240px;
+  background: /*rgb(248, 244, 229)*/ white;
+  border-left: 1px solid rgb(218, 215, 215);
+  transition: all 1.8s ease;
+  overflow: hidden;
+  position: relative;
+  border-radius: 8px;
+  box-shadow: 5px 5px 3px #888;
+  transition: all .8s ease-in-out;
+}
+
+.form_img_box:hover {
+  cursor: pointer;
+  transform: scale(1.08);
+}
+
 .signin-form {
   width: 50%;
-  margin: 100px 0px 0px 0px;
-  height: 60vh;
+  padding: 40px 0px 40px 0px;
 }
 
 .signin-form form .btn-primary {
   background-color: dimgray;
   border: 1px solid dimgray;
+}
+
+.forms-container .btn-success {
+  background-color: dimgray;
+  border: 1px solid dimgray;
+}
+
+.forms-container form input {
+  font-size: small;
 }
 
 .grid-container {
@@ -156,8 +255,14 @@ li a:hover {
     .signin-form {
       width: 90%;
     }
+    .forms-container {
+      width: 90%;
+    }
     .centered-logo-text {
       font-size: 30px;
+    }
+    .form_img_box {
+      margin: 0px 20px 20px 0px;
     }
 }
 
@@ -181,11 +286,19 @@ li a:hover {
 }
 
 .display-login-error {
-  color: red;
-  font-size: 14px;
+  color: #fff;
+  font-size: 13px;
   font-weight: 600;
 }
 
+.display-form-error {
+  color: crimson;
+  font-size: 13px;
+}
+
+.btnStyle {
+  margin: 5px;
+}
 /********************************************  END OF LOGIN *************************************/
 
 /**************** Sign up **********************************/
@@ -228,7 +341,6 @@ li a:hover {
         font-size: 20px;
         padding: 20px 10px 0px 10px;
     }
-
 }
 
 

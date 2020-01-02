@@ -3,6 +3,14 @@ body {
     padding: 0;
     font-family: sans-serif;
 }
+
+.update-warning {
+    margin: 100px auto;
+    font-family: sans-serif, fantasy, 'Times New Roman', Times, serif;
+    color: crimson;
+    font-size: 16px;
+    text-align: center;
+}
     
 .dash-box {
     margin-top: 70px;
@@ -12,8 +20,14 @@ body {
     display: flex;
     flex-wrap: wrap;
     width: 100vw;
-    background-color: #eee;
-    box-shadow: 0 5px 5px -5px dimgray;
+    background-color: rgba(0,0,0,.4);
+    background-image:
+    repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+    repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+    linear-gradient(60deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
+    linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
+    background-size: 70px 120px;
+  box-shadow: 0 5px 5px -5px dimgray;
 }
 
 .filter-section {
@@ -98,63 +112,3 @@ body {
         font-family: fantasy,'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         font-weight: 100;
     }
-    
-
-    /**
-    @media only screen and (max-width: 640px) {
-    
-        
-        /*.sidebar-container {
-            height: 400px
-        }
-    
-        .sidebar {
-            width: 200px;
-        /* padding-top: 5px;
-        }
-    
-        .filter-the-main hr, .filter-the-main br {
-            display: none;
-        }
-    
-        .filter-the-main {
-            padding: 0px 3px 0px 3px;
-        }
-        
-        .filter-heading {
-            font-size: 14px;
-            font-weight: 400;
-        }
-        
-        .title-filter {
-            font-weight: 200;
-            font-size: 12px;
-            padding:2px;
-        }
-        
-        .all-tags {
-            margin-bottom: 1px;
-        }
-        
-        .title-filter-tag {
-            font-size: 12px;
-            padding: 1px;
-            border-radius: 5px;
-        }
-    
-        .range-filter {
-            font-size: 12px;
-        }
-        
-        .filter-range-value {
-            font-size:12px;
-            margin-bottom: 3px;
-        }
-        
-        .inputField {
-            height: 15px;
-            padding: 1px;
-            font-size: 12px;
-            margin-bottom: 3px;
-        }
-    }*/

@@ -62,7 +62,14 @@ class DashBoard extends React.Component {
         } else {
             const { sexPref, users, searchedTag, /*gender,*/ ageRange, popularityRange, city } = this.state;
             const { handleChange } = this;
-            return <div>
+            if (this.props.profile.sexPref === "" || this.props.profile.gender === "") {
+                return <div>
+                    <Navbar/>
+                    <h1 className="update-warning">Please Update your Gender and Preference</h1>
+                    <Footer/>
+                </div>
+            } else {
+                return <div>
                     <Navbar/>
                     <div className="dash-box">
                         <Sidebar
@@ -88,6 +95,7 @@ class DashBoard extends React.Component {
                     </div>
                     <Footer/>
                 </div>
+            }
         }
     }
 }

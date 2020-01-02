@@ -1,21 +1,73 @@
 import React, { Component } from 'react';
 import { signUp } from '../../store/actions/authAction';
 import { connect } from 'react-redux';
-import Nav from './Nav';
-import Footer from './Footer';
+import FormUserDetails from "./FormUserDetails";
+import FormPersonalDetails from "./FormPersonalDetails";
+import Confirm from './Confirm';
 import './LoginStyle.css';
 
 class SignUp extends Component {
 
     state = {
+        step : 1,
         firstname : "",
         lastname : "",
         username : "",
         email: "",
         password:"",
         cpassword:"",
+        tags: "",
+        invalid_input: "",
+        bio: "",
+        age: "",
+        gender: "",
+        sexPref: "",
+    }
+
+    onKeyUp = (e) => {
+        if (e.which === 32) {
+            let input = e.target.value.trim().split(" ");
+                if (input.length === 0 || input[0] === "") return;
+                    if (input[0].toLowerCase() !== "gym" && input[0].toLowerCase() !== "art" && input[0].toLowerCase() !== "music" && input[0].toLowerCase() !== "photography" && input[0].toLowerCase() !== "coding"){
+                        this.setState({
+                            invalid_input: "YOU ENTERED AN INVALID TAG!",
+                        });
+                        return;
+                    }
+    
+                this.setState({
+                    tags: [ ...this.state.tags, input ]
+                });
+                this.setState({ 
+                    invalid_input: ""
+                });
+            e.target.value = "";
+        }
+    }
+
+    onDeleteTag = (tag) => {
+        var tags = this.state.tags.filter((t) => {
+          return (t !== tag);
+        });
+        this.setState({
+          tags: tags
+        });
+    }
+
+    prevStep = () => {
+        const { step } = this.state;
+        this.setState({
+            step: step - 1
+        })
     }
     
+    nextStep = () => {
+        const { step } = this.state;
+        this.setState({
+            step: step + 1
+        })
+    }
+
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.sign_Up(this.state);
@@ -29,99 +81,54 @@ class SignUp extends Component {
     }
 
     render() {
+        const { step, firstname, lastname, username, email } = this.state;
+        const { tags, invalid_input, bio, age, gender, sexPref } = this.state; 
         const { signup_error } = this.props;
         const display_signup_error = signup_error ? signup_error : "";    
-        return (
-            <div>
-                <Nav/>
-                <div className="signup-main-container">
-                    <div className="signup-container">
-                        <div>
-                            <p className="signup-text-msg">{"SIGN UP AND START DATING NOW"}</p>
-                        </div>
-                        <main className="main-style pa4 black-80">
-                            <form className="measure center" onSubmit={this.handleSubmit}>
-                                <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-                                <legend className="f4 fw6 ph0 mh0">Sign Up</legend>
-                                <div className="mt3">
-                                    <label className="db fw6 lh-copy f6" htmlFor="firstname">Firstname</label>
-                                    <input  onChange={this.handleChange} value={this.state.firstname} className="pa2 input-reset ba bg-transparent  w-100" type="text" name="firstname"  id="firstname"/>
-                                </div>
-                                <div className="mt3">
-                                    <label className="db fw6 lh-copy f6" htmlFor="lastname">Lastname</label>
-                                    <input  onChange={this.handleChange} value={this.state.lastname} className="pa2 input-reset ba bg-transparent  w-100" type="text" name="lastname"  id="lastname"/>
-                                </div>
-                                <div className="mt3">
-                                    <label className="db fw6 lh-copy f6" htmlFor="username">Username</label>
-                                    <input  onChange={this.handleChange} value={this.state.username} className="pa2 input-reset ba bg-transparent  w-100" type="text" name="username"  id="username"/>
-                                </div>
-                                <div className="mt3">
-                                    <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
-                                    <input  onChange={this.handleChange} value={this.state.email} className="pa2 input-reset ba bg-transparent  w-100" type="email" name="email"  id="email-address"/>
-                                </div>
-                                <div className="mt3">
-                                    <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
-                                    <input  onChange={this.handleChange} value={this.state.password} className="pa2 input-reset ba bg-transparent  w-100" type="password" name="password"  id="password"/>
-                                </div>
-                                <div className="mv3">
-                                    <label className="db fw6 lh-copy f6" htmlFor="password">Re-type Password</label>
-                                    <input  onChange={this.handleChange} value={this.state.cpassword} className="b pa2 input-reset ba bg-transparent  w-100" type="password" name="cpassword"  id="cpassword"/>
-                                </div>
-                                </fieldset>
-                                <div className="">
-                                    <input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Sign Up"/>
-                                </div>
-                                <div className="display-login-error">
-                                        { display_signup_error }
-                                    </div>
-                            </form>
-                        </main>
-                    </div>
-
-
-                    {/*<div className="row">
-                        <div className="col-xs-12 col-sm-2 col-md-2 col-lg-2"></div>
-                        <div className="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-                            <div className="signUpBox text-center br3 shadow-5">
-                            <form onSubmit={this.handleSubmit}>
-                                <h2><strong>Join it's free</strong></h2>
-                                <p className="matchaMessage"><strong><i>And start dating now!!</i></strong></p>
-                                <div className="form-group">
-                                    <input onChange={this.handleChange} value={this.state.firstname} type="text" className="form-control"  name="firstname" placeholder="First Name"/>
-                                </div>
-                                <div className="form-group">
-                                    <input onChange={this.handleChange} value={this.state.lastname} type="text" className="form-control" name="lastname" placeholder="Last Name"/>
-                                </div>
-                                <div className="form-group">
-                                    <input onChange={this.handleChange} value={this.state.username} type="text" className="form-control"  name="username" placeholder="User Name"/>
-                                </div>
-                                <div className="form-group">
-                                    <input onChange={this.handleChange} value={this.state.email} type="text" className="form-control"  name="email" placeholder="Email"/>
-                                </div>
-                                <div className="form-group">
-                                    <input onChange={this.handleChange} type="password" className="form-control" name="password" placeholder="Password"/>
-                                </div>
-                                <div className="form-group">
-                                    <input onChange={this.handleChange} type="password" className="form-control" name="cpassword" placeholder="Confirm Password"/>
-                                </div>
-                                <button type="submit" className="btn btn-block btn-success">Register</button>
-                                <div className="message_style">
-                                    { display_signup_error }
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div className="col-xs-12 col-sm-2 col-md-2 col-lg-2"></div>
-            </div>*/}
-                </div>
-                <Footer/>  
-            </div>
-        )
+        if (step === 1) {
+            return <FormUserDetails
+                    nextStep={this.nextStep}
+                    handleChange={this.handleChange}
+                    firstname={firstname}
+                    lastname={lastname}
+                    username={username}
+                    email={email}
+                    display_signup_error={display_signup_error}
+                />
+        } else if (step === 2) {
+                return <FormPersonalDetails
+                    tags={tags}
+                    invalid_input={invalid_input}
+                    bio={bio}
+                    age={age}
+                    gender={gender}
+                    sexPref={sexPref}
+                    nextStep={this.nextStep}
+                    prevStep={this.prevStep}
+                    handleChange={this.handleChange}
+                    onKeyUp={this.onKeyUp}
+                    onDeleteTag={this.onDeleteTag}
+                />
+        } else if (step === 3) {
+                return <Confirm
+                    nextStep={this.nextStep}
+                    prevStep={this.prevStep}
+                    firstname ={firstname}
+                    lastname ={lastname}
+                    username ={username}
+                    email={email}
+                    tags={tags}
+                    bio={bio}
+                    age={age}
+                    gender={gender}
+                    sexPref={sexPref}
+                    handleSubmit={this.handleSubmit}
+                    display_signup_error={display_signup_error}
+                />
+            
+        }
     }
-
 }
-
-
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -130,7 +137,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         signup_error: state.auth.auth_signup_error
     }

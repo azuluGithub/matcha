@@ -20,17 +20,17 @@ class Content extends Component {
     const my_view = views.filter(didIView(auth.uid, user.id));
 
     if (my_view.length > 0) {
-      console.log("you already viewed this profile")
     } else {
-      this.props.viewUser(auth.uid,  user.id);
+      this.props.viewUser(auth.uid, user.id);
     }
   }
 
   render() {
     const { user, blocks, auth } = this.props;
     if (blocks) {
+      const wasIBlocked = blocks.filter(iBlocked(user.id, auth.uid));
       const didIBlock = blocks.filter(iBlocked(auth.uid, user.id));
-      if (didIBlock.length > 0) {
+      if (didIBlock.length > 0 || wasIBlocked.length) {
         return <div></div>
       } else {
           return <div className="float-left" key={user.id}>

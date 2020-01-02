@@ -5,8 +5,9 @@ class NewsMatchesSummary extends Component {
 
     render() {
         const { auth, user, blocks, iBlocked } = this.props;
+        const wasIBlocked = blocks.filter(iBlocked(user.id, auth.uid));
         const didIBlock = blocks.filter(iBlocked(auth.uid, user.id));
-        if (didIBlock.length > 0) {
+        if (didIBlock.length > 0 || wasIBlocked.length) {
             return <div></div>
         } else {
             return (

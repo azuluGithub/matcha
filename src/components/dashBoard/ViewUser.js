@@ -16,6 +16,10 @@ const delete_like = (unliker_id, unliked_id) => (like) => {
     return like.liker_id === unliker_id && like.liked_id === unliked_id
 }
 
+const delete_unLike = (liker_id, liked_id) => (unLike) => {
+    return unLike.unLiker_id === liker_id && unLike.unLiked_id === liked_id
+}
+
 const delete_match = (unliker_id, unliked_id) => (match) => {
     return match.liker_id === unliker_id && match.liked_id === unliked_id
 }
@@ -27,14 +31,20 @@ const iUnLiked = (unLiker_id, unLiked_id) => (unLike) => {
 class ViewUser extends Component {
     handleLike = (e) => {
         e.preventDefault();
-        const { auth, uid, likes, profile } = this.props;
+        const { auth, uid, likes, profile, unLikes } = this.props;
         let new_popularity = ++profile.popularity;
         const wasILiked = likes.filter(whoLiked(uid, auth.uid));
-        if (wasILiked.length > 0) {
-            this.props.likeUser(auth.uid, uid, new_popularity);
+        const delete_unlike_id = unLikes.filter(delete_unLike(auth.uid, uid));
+        if (wasILiked.length > 0 && delete_unlike_id.length > 0) {
+            this.props.likeUser(auth.uid, uid, new_popularity, delete_unlike_id[0].id);
             this.props.matchUser(auth.uid, uid);
+        } else if (wasILiked.length > 0 && delete_unlike_id.length <= 0) {
+            this.props.likeUser(auth.uid, uid, new_popularity, null);
+            this.props.matchUser(auth.uid, uid);
+        } else if (wasILiked.length <= 0 && delete_unlike_id.length > 0) {
+            this.props.likeUser(auth.uid, uid, new_popularity, delete_unlike_id[0].id);
         } else {
-            this.props.likeUser(auth.uid, uid, new_popularity);
+            this.props.likeUser(auth.uid, uid, new_popularity, null);
         }
     }
 
@@ -43,7 +53,6 @@ class ViewUser extends Component {
         const { auth, uid, likes, matches } = this.props;
         const delete_id = likes.filter(delete_like(auth.uid, uid));
         const delete_match_id = matches.filter(delete_match(auth.uid, uid));
-        console.log(delete_id, delete_match_id)
         if (delete_id.length > 0 && delete_match_id.length > 0) {
             this.props.unLikeUser(auth.uid, uid, delete_id[0].id, delete_match_id[0].id);
         } else if (delete_id.length > 0 && delete_match_id.length <= 0) {
@@ -94,7 +103,7 @@ const mapDispatchToProps = (dispath) => {
     return {
         blockUser: (blocker_id, blocked_id) => dispath(blockUser(blocker_id, blocked_id)),
         unLikeUser: (unLiker_id, unLiked_id, delete_id, delete_match_id) => dispath(unLikeUser(unLiker_id, unLiked_id, delete_id, delete_match_id)),
-        likeUser: (liker_id, liked_id, new_popularity) => dispath(likeUser(liker_id, liked_id, new_popularity)),
+        likeUser: (liker_id, liked_id, new_popularity, delete_unlike_id) => dispath(likeUser(liker_id, liked_id, new_popularity, delete_unlike_id)),
         matchUser: (liker_id, liked_id) => dispath(matchUser(liker_id, liked_id))
     }
 }

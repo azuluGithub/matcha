@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { signOut } from '../../store/actions/authAction';
-import { FaCommentAlt, FaPowerOff, FaRegBell, FaHouseDamage } from "react-icons/fa";
+import { FaFacebookMessenger, FaPowerOff, FaRegBell, FaHouseDamage } from "react-icons/fa";
 
 
 function Navbar(props) {
@@ -22,7 +22,7 @@ function Navbar(props) {
                     <NavLink to="/"><FaHouseDamage/></NavLink>
                 </li>
                 <li>
-                    <NavLink to="/chat"><FaCommentAlt/></NavLink>
+                    <NavLink to="/chat"><FaFacebookMessenger/></NavLink>
                 </li>
                 <li>
                     <NavLink to="/news"><FaRegBell/></NavLink>

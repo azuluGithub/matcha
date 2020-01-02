@@ -63,7 +63,7 @@ class News extends Component {
         if (!auth.uid) {
             return ( <Redirect to="/signin"/> )
         } else {
-            if (likes && users && auth && matches && blocks) {
+            if (likes && users && auth && matches && views && blocks) {
                 const users_likes = likeFunc(likes, users, auth.uid);
                 const users_views = viewFunc(views, users, auth.uid);
                 const users_matches = matchesFunc(matches, users, auth.uid);

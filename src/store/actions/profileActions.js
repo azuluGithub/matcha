@@ -124,7 +124,7 @@ export const viewUser = (viewer_id, viewed_id) => {
     }
 }
 
-export const likeUser = (liker_id, liked_id, new_popularity) => {
+export const likeUser = (liker_id, liked_id, new_popularity, delete_unlike_id) => {
     return (dispatch, getState, { getFirebase , getFirestore }) => {
         const firestore = getFirestore();
         firestore.collection('likes').add({
@@ -135,6 +135,8 @@ export const likeUser = (liker_id, liked_id, new_popularity) => {
             return firestore.collection('users').doc(liked_id).update({
                 popularity: new_popularity,
             })
+        }).then(() => {
+            firestore.collection("unLikes").doc(delete_unlike_id).delete()
         }).then(() => {
             dispatch({ type: "LIKED_SUCCESS"});
         }).catch((error) => {

@@ -5,6 +5,7 @@ import NewsVisits from '../profileNews/NewsVisits';
 import NewsLikes from '../profileNews/NewsLikes';
 import ScrollBar from '../../../ScrollBar';
 import { Link } from 'react-router-dom';
+import { FaEnvelope, FaUser, FaTags, FaHeart, FaVenusMars, FaHistory, FaInfo } from "react-icons/fa";
 
 const iBlocked = (blocker_id, blocked_id) => (block) => {
     return block.blocker_id === blocker_id && block.blocked_id === blocked_id;
@@ -80,20 +81,17 @@ class EditContent extends Component {
                                 className="form-control-file mb2"
                             />
                         </div>
-                        <span className="key">firstname: </span><span className="value">{ firstname }</span><br/>
-                        <span className="key">lastname: </span><span className="value">{ lastname }</span><br/>
-                        <span className="key">username: </span><span className="value">{ username }</span><br/>
-                        <span className="key">email: </span><span className="value">{ email }</span><br/>
-                        <span className="key">gender: </span><span className="value">{ gender }</span><br/>
-                        <span className="key">age: </span><span className="value">{ age } years</span><br/>
-                        <span className="key">preference: </span><span className="value">{ sexPref }</span><br/>
-                        <hr/>
-                            { tags && tags.map(tag => {
-                                return <span className="vuid_tag" key={tag}> { tag }</span>
-                                })
-                            }
-                        <hr/>
-                        <span className="viud_bio">{ bio }</span><br/>
+                        <span className="key"><FaUser/> </span><span className="value">{ username }</span><br/>
+                        <span className="key"><FaVenusMars/> </span><span className="value">{ gender }</span><br/>
+                        <span className="key"><FaHistory/> </span><span className="value">{ age } years</span><br/>
+                        <span className="key"><FaHeart/> </span><span className="value">{ sexPref }</span><br/>
+                        <span className="key"><FaEnvelope/> </span><span className="value">{ email }</span><br/>
+                        <span className="viud_bio"><FaInfo/> { bio }</span><br/>
+                        <FaTags/> {" "}
+                        { tags && tags.map(tag => {
+                            return <span className="vuid_tag" key={tag}> { tag }</span>
+                            })
+                        }
                     </div>
                 </div>
                 <div className="visit-history">

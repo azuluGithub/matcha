@@ -21,7 +21,7 @@ class Content extends Component {
 
     if (my_view.length > 0) {
     } else {
-      this.props.viewUser(auth.uid, user.id);
+      this.props.viewUser(auth.uid, user.id, "unread");
     }
   }
 
@@ -59,7 +59,7 @@ class Content extends Component {
 
 const mapDispatchToProps = (dispath) => {
   return {
-      viewUser: (viewer_id, viewed_id) => dispath(viewUser(viewer_id, viewed_id))
+      viewUser: (viewer_id, viewed_id, view_status) => dispath(viewUser(viewer_id, viewed_id, view_status))
   }
 }
 

@@ -16,21 +16,21 @@ import Navbar from '../fragements/Navbar';
 class Profile extends Component {
   
   state = {
-      firstname : this.props.profile.firstname,
-      lastname : this.props.profile.lastname,
-      username : this.props.profile.username,
-      tags: this.props.profile.tags,
-      bio: this.props.profile.bio,
-      age: this.props.profile.age,
-      url : this.props.profile.url,
-      gender: this.props.profile.gender,
-      sexPref: this.props.profile.sexPref,
-      email: this.props.auth.email,
-      lati: this.props.profile.lati,
-      long: this.props.profile.long,
-  }
+    firstname : this.props.profile.firstname,
+    lastname : this.props.profile.lastname,
+    username : this.props.profile.username,
+    tags: this.props.profile.tags,
+    bio: this.props.profile.bio,
+    age: this.props.profile.age,
+    url : this.props.profile.url,
+    gender: this.props.profile.gender,
+    sexPref: this.props.profile.sexPref,
+    email: this.props.auth.email,
+    lati: this.props.profile.lati,
+    long: this.props.profile.long,
+}
   
-  componentWillReceiveProps = (props) => {
+UNSAFE_componentWillReceiveProps = (props) => {
     this.setState({
       firstname : props.profile.firstname,
       lastname : props.profile.lastname,

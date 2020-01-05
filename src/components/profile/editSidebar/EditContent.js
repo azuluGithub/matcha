@@ -5,7 +5,7 @@ import NewsVisits from '../profileNews/NewsVisits';
 import NewsLikes from '../profileNews/NewsLikes';
 import ScrollBar from '../../../ScrollBar';
 import { Link } from 'react-router-dom';
-import { FaEnvelope, FaUser, FaTags, FaHeart, FaVenusMars, FaHistory, FaInfo } from "react-icons/fa";
+import { FaEnvelope, FaUser, FaTags, FaHeart, FaVenusMars, FaHistory } from "react-icons/fa";
 
 const iBlocked = (blocker_id, blocked_id) => (block) => {
     return block.blocker_id === blocker_id && block.blocked_id === blocked_id;
@@ -86,8 +86,10 @@ class EditContent extends Component {
                         <span className="key"><FaHistory/> </span><span className="value">{ age } years</span><br/>
                         <span className="key"><FaHeart/> </span><span className="value">{ sexPref }</span><br/>
                         <span className="key"><FaEnvelope/> </span><span className="value">{ email }</span><br/>
-                        <span className="viud_bio"><FaInfo/> { bio }</span><br/>
-                        <FaTags/> {" "}
+                        <hr/>
+                        <span className="key"> </span><span className="value">{ bio }</span><br/>
+                        <hr/>
+                        <span className="key"><FaTags/></span>{" "}
                         { tags && tags.map(tag => {
                             return <span className="vuid_tag" key={tag}> { tag }</span>
                             })

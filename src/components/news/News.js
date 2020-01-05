@@ -18,9 +18,9 @@ const likeFunc = (likes, users, auth_id) => {
     for (let i = 0; i < likes.length; i++) {
          if (likes[i].liked_id === auth_id) {
             for (let j = 0; j < users.length; j++) {
-                 if (users[j].id === likes[i].liker_id) {
+                if (users[j].id === likes[i].liker_id) {
                     listOfLikers.push(users[j]);
-                 }
+                }
             }
          }
     }
@@ -32,9 +32,9 @@ const viewFunc = (views, users, auth_id) => {
     for (let i = 0; i < views.length; i++) {
          if (views[i].viewed_id === auth_id) {
             for (let j = 0; j < users.length; j++) {
-                 if (users[j].id === views[i].viewer_id) {
+                if (users[j].id === views[i].viewer_id) {
                     listOfViews.push(users[j]);
-                 }
+                }
             }
          }
     }
@@ -46,20 +46,19 @@ const matchesFunc = (matches, users, auth_id) => {
     for (let i = 0; i < matches.length; i++) {
          if (matches[i].liker_id === auth_id || matches[i].liked_id === auth_id) {
             for (let j = 0; j < users.length; j++) {
-                 if ((users[j].id === matches[i].liker_id || users[j].id === matches[i].liked_id) && users[j].id !== auth_id) {
+                if ((users[j].id === matches[i].liker_id || users[j].id === matches[i].liked_id) && users[j].id !== auth_id) {
                     listOfMatches.push(users[j]);
-                 }
+                }
             }
          }
     }
     return listOfMatches;
-  }
+}
 
 class News extends Component {
 
     render () {
         const { auth, views, users, likes, matches, blocks } = this.props;
-        
         if (!auth.uid) {
             return ( <Redirect to="/signin"/> )
         } else {

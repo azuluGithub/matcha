@@ -66,7 +66,6 @@ class SidebarContent extends Component {
                 <input
                     type="hidden"
                     name="sexPref"
-                    value={this.props.sexPref}
                     onChange={this.props.handleChange}
                 />
               </div>

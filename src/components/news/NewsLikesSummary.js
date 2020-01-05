@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { viewUser } from '../../store/actions/profileActions';
+import { viewUser, updateLikeUser } from '../../store/actions/profileActions';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
@@ -9,15 +9,22 @@ const didIView = (viewer_id, viewed_id) => (view) => {
     return view.viewer_id === viewer_id && view.viewed_id === viewed_id;
 }
 
+const like_notify = (liker_id, liked_id) => (like) => {
+    return like.liker_id === liker_id && like.liked_id === liked_id;
+}
+
 class NewslikesSummary extends Component {
     
     handleClick = (e) => {
-        const { user, auth, views } = this.props;
+        const { user, auth, views, likes } = this.props;
         const my_view = views.filter(didIView(auth.uid, user.id));
-    
+        const likes_id = likes.filter(like_notify(user.id, auth.uid));
+        console.log(likes_id[0].id)
         if (my_view.length > 0) {
+            this.props.updateLikeUser(likes_id[0].id, "read");
         } else {
-          this.props.viewUser(auth.uid,  user.id);
+            this.props.viewUser(auth.uid,  user.id);
+            this.props.updateLikeUser(likes_id[0].id, "read");
         }
     }
 
@@ -50,20 +57,23 @@ class NewslikesSummary extends Component {
 
 const mapDispatchToProps = (dispath) => {
     return {
-        viewUser: (viewer_id, viewed_id) => dispath(viewUser(viewer_id, viewed_id))
+        viewUser: (viewer_id, viewed_id) => dispath(viewUser(viewer_id, viewed_id)),
+        updateLikeUser: (likes_id, like_status) => dispath(updateLikeUser(likes_id, like_status))
     }
   }
   
   const mapStateToProps = (state) => {
     return {
       profile: state.firebase.profile,
-      views: state.firestore.ordered.views
+      views: state.firestore.ordered.views,
+      likes: state.firestore.ordered.likes
     }
   }
   
   export default compose(
     connect(mapStateToProps, mapDispatchToProps),
     firestoreConnect([
-        { collection: "views" }
+        { collection: "views" },
+        { collection: "likes" }
     ])
   )(NewslikesSummary);

@@ -40,7 +40,7 @@ class DashBoard extends React.Component {
         city: ""
     }
 
-    componentWillReceiveProps = (props) => {
+    UNSAFE_componentWillReceiveProps(props) {
         const my_pref = props.profile.sexPref;
         this.setState({
             users: props.users,
@@ -62,7 +62,7 @@ class DashBoard extends React.Component {
         } else {
             const { sexPref, users, searchedTag, /*gender,*/ ageRange, popularityRange, city } = this.state;
             const { handleChange } = this;
-            if (this.props.profile.sexPref === "" || this.props.profile.gender === "") {
+            if (this.props.profile.sexPref === "") {
                 return <div>
                     <Navbar/>
                     <h1 className="update-warning">Please Update your Gender and Preference</h1>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { viewUser } from '../../store/actions/profileActions';
+import { viewUser, updateViewUser } from '../../store/actions/profileActions';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
@@ -14,10 +14,12 @@ class NewsViewsSummary extends Component {
     handleClick = (e) => {
         const { user, auth, views } = this.props;
         const my_view = views.filter(didIView(auth.uid, user.id));
-    
+        const views_id= views.filter(didIView(user.id, auth.uid));
         if (my_view.length > 0) {
+            this.props.updateViewUser(views_id[0].id, "read");
         } else {
-          this.props.viewUser(auth.uid,  user.id);
+            this.props.viewUser(auth.uid,  user.id, "unread");
+            this.props.updateViewUser(views_id[0].id, "read");
         }
     }
 
@@ -50,7 +52,8 @@ class NewsViewsSummary extends Component {
 
 const mapDispatchToProps = (dispath) => {
     return {
-        viewUser: (viewer_id, viewed_id) => dispath(viewUser(viewer_id, viewed_id))
+        viewUser: (viewer_id, viewed_id, view_status) => dispath(viewUser(viewer_id, viewed_id, view_status)),
+        updateViewUser: (views_id, view_status) => dispath(updateViewUser(views_id, view_status))
     }
   }
   

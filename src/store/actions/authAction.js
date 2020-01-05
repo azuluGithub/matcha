@@ -87,7 +87,7 @@ export const signUp = (newUser) => {
                         firstname: newUser.firstname,
                         lastname: newUser.lastname,
                         username: newUser.username,
-                        gender: "",
+                        gender: "male",
                         sexPref: "",
                         age: 18,
                         bio: "",

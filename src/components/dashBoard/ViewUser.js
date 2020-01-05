@@ -30,11 +30,14 @@ const iUnLiked = (unLiker_id, unLiked_id) => (unLike) => {
 
 class ViewUser extends Component {
     handleLike = (e) => {
-        e.preventDefault();
+       e.preventDefault();
         const { auth, uid, likes, profile, unLikes } = this.props;
         let new_popularity = ++profile.popularity;
+        //check if i'm already liked
         const wasILiked = likes.filter(whoLiked(uid, auth.uid));
+        //check if I unliked
         const delete_unlike_id = unLikes.filter(delete_unLike(auth.uid, uid));
+        //
         if (wasILiked.length > 0 && delete_unlike_id.length > 0) {
             this.props.likeUser(auth.uid, uid, new_popularity, delete_unlike_id[0].id);
             this.props.matchUser(auth.uid, uid);
@@ -43,13 +46,13 @@ class ViewUser extends Component {
             this.props.matchUser(auth.uid, uid);
         } else if (wasILiked.length <= 0 && delete_unlike_id.length > 0) {
             this.props.likeUser(auth.uid, uid, new_popularity, delete_unlike_id[0].id);
-        } else {
+        } else if (wasILiked.length <= 0 && delete_unlike_id.length <= 0) {
             this.props.likeUser(auth.uid, uid, new_popularity, null);
         }
     }
 
     handleUnLike = (e) => {
-        e.preventDefault();
+       e.preventDefault();
         const { auth, uid, likes, matches } = this.props;
         const delete_id = likes.filter(delete_like(auth.uid, uid));
         const delete_match_id = matches.filter(delete_match(auth.uid, uid));
@@ -65,7 +68,7 @@ class ViewUser extends Component {
     }
 
     handleBlock = (e) => {
-        e.preventDefault();
+      /*  e.preventDefault();*/
         const { auth, uid } = this.props;
         this.props.blockUser(auth.uid, uid);
         this.props.history.push('/');

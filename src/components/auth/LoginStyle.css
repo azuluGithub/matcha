@@ -38,6 +38,17 @@ body {
   text-shadow: 2px 2px #888;
 }
 
+.nav-tags {
+  font-size: 20px;
+}
+
+.notify {
+  background-color: red;
+  color: #fff;
+  font-size: x-small;
+  padding: 1px 2px;
+}
+
 ul {
   display: flex;
   list-style-type: none;
@@ -74,6 +85,9 @@ li a:hover {
     }
     li {
         padding: 20px 0px 20px 20px;
+    }
+    .nav-tags {
+      font-size: 16px;
     }
 }
 

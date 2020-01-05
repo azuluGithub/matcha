@@ -319,7 +319,7 @@
 .you_liked {
   text-align: center;
   font-size: 12px;
-  font-weight: 900;
+  font-weight: 100;
   color: rgb(185, 156, 77);
   padding-left: 20%;
 }
@@ -446,8 +446,8 @@ hr {
   font-size: 14px;
   font-weight: 100;
   color: white;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  background-color: crimson;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.3);
   margin: 3px 5px 3px 0px;
   padding: 3px;
   border-radius: 3px;
@@ -560,14 +560,17 @@ hr {
 
 .viewUser_details_liked {
   color: rgb(74, 179, 109);
+  font-weight: 300;
 }
 
 .viewUser_details_Youliked {
   color: coral;
+  font-weight: 300;
 }
 
 .viewUser_details_YouMatched {
   color: rgb(185, 156, 77);
+  font-weight: 300;
 }
 
 .viewedUser_image {

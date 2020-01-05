@@ -90,13 +90,13 @@ body {
 .logged_info .key {
     font-size: 14px;
     font-weight: 100;
-    color: rgba(0, 0, 0, 0.9);
+    color: crimson;
 }
   
 .logged_info .value {
     font-size: 14px;
     font-weight: 100;
-    color: maroon;
+    color: rgba(0, 0, 0, 0.9);
 }
 
 .logged_name {

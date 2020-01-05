@@ -2,7 +2,7 @@ import React from 'react';
 import { FaThumbsUp, FaThumbsDown, FaUserAltSlash, FaPhoneVolume, FaBroadcastTower } from "react-icons/fa";
 import moment from 'moment';
 import ViewUserMap from './ViewUserMap';
-import { FaHeart, FaMapMarkerAlt, FaVenusMars, FaStar, FaHistory, FaInfo, FaTags } from "react-icons/fa";
+import { FaHeart, FaMapMarkerAlt, FaVenusMars, FaStar, FaHistory, FaTags } from "react-icons/fa";
 
 class User extends React.Component {
 
@@ -61,8 +61,10 @@ class User extends React.Component {
                         <span className="key"><FaStar/> </span><span className="value">{ profile.popularity }</span><br/>
                         <span className="key"><FaMapMarkerAlt/> </span><span className="value">{ profile.city }</span><br/>
                         <span className="key"><FaBroadcastTower/> </span><span className="viud_status_value">{status_value}</span><br/>
-                        <span className="key"><FaInfo/> </span><span className="viud_bio">{ profile.bio }</span><br/>
-                        <FaTags/> {" "}
+                        <hr/>
+                        <span className="key"></span><span className="viud_bio">{ profile.bio }</span><br/>
+                        <hr/>
+                        <span className="key"><FaTags/></span>{" "}
                         { profile.tags && profile.tags.map(tag => {
                             return <span className="vuid_tag" key={tag}> { tag }</span>
                             })

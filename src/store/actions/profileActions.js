@@ -8,6 +8,7 @@ export const createChat = (sender_message, sender_Id, receiver_Id) => {
                 sender_message: sender_message,
                 sender_Id: sender_Id,
                 receiver_Id: receiver_Id,
+                chat_status: "unread",
                 createdAt: new Date(),
             }).then(() => {
                 dispatch({ type: "CREATE_CHAT" });
@@ -109,17 +110,46 @@ export const updateUserPassword = (pass) => {
     }
 }
 
-export const viewUser = (viewer_id, viewed_id) => {
+export const viewUser = (viewer_id, viewed_id, view_status) => {
     return (dispatch, getState, { getFirebase , getFirestore }) => {
         const firestore = getFirestore();
         firestore.collection('views').add({
             viewer_id: viewer_id,
             viewed_id: viewed_id,
+            view_status: view_status,
             createdAt: new Date(),
         }).then(() => {
             dispatch({ type: "VIEW_SUCCESS"});
         }).catch((error) => {
             dispatch({ type: "VIEW_ERROR" });
+        })
+    }
+}
+
+export const updateViewUser = (views_id, view_status) => {
+    return (dispatch, getState, { getFirebase , getFirestore }) => {
+        const firestore = getFirestore();
+        firestore.collection('views').doc(views_id).update({
+            view_status: view_status,
+            createdAt: new Date(),
+        }).then(() => {
+            dispatch({ type: "VIEW_SUCCESS"});
+        }).catch((error) => {
+            dispatch({ type: "VIEW_ERROR" });
+        })
+    }
+}
+
+export const updateLikeUser = (likes_id, like_status) => {
+    return (dispatch, getState, { getFirebase , getFirestore }) => {
+        const firestore = getFirestore();
+        firestore.collection('likes').doc(likes_id).update({
+            like_status: like_status,
+            createdAt: new Date(),
+        }).then(() => {
+            dispatch({ type: "LIKES_SUCCESS"});
+        }).catch((error) => {
+            dispatch({ type: "LIKES_ERROR" });
         })
     }
 }
@@ -130,9 +160,10 @@ export const likeUser = (liker_id, liked_id, new_popularity, delete_unlike_id) =
         firestore.collection('likes').add({
             liker_id: liker_id,
             liked_id: liked_id,
+            like_status: "unread",
             createdAt: new Date(),
         }).then(() => {
-            return firestore.collection('users').doc(liked_id).update({
+            firestore.collection('users').doc(liked_id).update({
                 popularity: new_popularity,
             })
         }).then(() => {
@@ -148,9 +179,10 @@ export const likeUser = (liker_id, liked_id, new_popularity, delete_unlike_id) =
 export const unLikeUser = (unLiker_id, unLiked_id, delete_id, delete_match_id) => {
     return (dispatch, getState, { getFirebase , getFirestore }) => {
         const firestore = getFirestore();
-        firestore.collection('unLikes').add({
+        return firestore.collection('unLikes').add({
             unLiker_id: unLiker_id,
             unLiked_id: unLiked_id,
+            unlike_status: "unread",
             createdAt: new Date(),
         }).then(() => {
             firestore.collection("likes").doc(delete_id).delete()
@@ -170,6 +202,7 @@ export const matchUser = (liker_id, liked_id) => {
         firestore.collection('matches').add({
             liker_id: liker_id,
             liked_id: liked_id,
+            match_status: "unread",
             createdAt: new Date(),
         }).then(() => {
             dispatch({ type: "MATCHED_SUCCESS"});

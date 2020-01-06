@@ -25,6 +25,7 @@ const ChatList = ({ chats, auth, matchedUserId, users }) => {
                     <CreateChat
                         auth={auth}
                         matchedUserId={matchedUserId}
+                        chats={chats}
                     />
                 </div>
             </div>

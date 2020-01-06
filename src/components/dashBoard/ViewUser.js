@@ -60,11 +60,11 @@ class ViewUser extends Component {
             this.props.unLikeUser(auth.uid, uid, delete_id[0].id, delete_match_id[0].id);
         } else if (delete_id.length > 0 && delete_match_id.length <= 0) {
             this.props.unLikeUser(auth.uid, uid, delete_id[0].id, null);
-        } else if (delete_id.length <= 0 && delete_match_id.length> 0) {
+        } /*else if (delete_id.length <= 0 && delete_match_id.length> 0) {
             this.props.unLikeUser(auth.uid, uid, null, delete_match_id[0].id)
         } else {
             this.props.unLikeUser(auth.uid, uid, null, null);
-        }
+        }*/
     }
 
     handleBlock = (e) => {

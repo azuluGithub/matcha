@@ -8,6 +8,7 @@ import Navbar from '../fragements/Navbar';
 import NewsMatches from './NewsMatches';
 import NewsVisits from './NewsVisits';
 import NewsLikes from './NewsLikes';
+import NewsUnLikes from './NewsUnLikes';
 
 const iBlocked = (blocker_id, blocked_id) => (block) => {
     return block.blocker_id === blocker_id && block.blocked_id === blocked_id;
@@ -16,15 +17,29 @@ const iBlocked = (blocker_id, blocked_id) => (block) => {
 const likeFunc = (likes, users, auth_id) => {
     const listOfLikers = [];
     for (let i = 0; i < likes.length; i++) {
-         if (likes[i].liked_id === auth_id) {
+        if (likes[i].liked_id === auth_id) {
             for (let j = 0; j < users.length; j++) {
                 if (users[j].id === likes[i].liker_id) {
                     listOfLikers.push(users[j]);
                 }
             }
-         }
+        }
     }
     return listOfLikers;
+}
+
+const unLikeFunc = (unLikes, users, auth_id) => {
+    const listOfunLikers = [];
+    for (let i = 0; i < unLikes.length; i++) {
+         if (unLikes[i].unLiked_id === auth_id) {
+            for (let j = 0; j < users.length; j++) {
+                if (users[j].id === unLikes[i].unLiker_id) {
+                    listOfunLikers.push(users[j]);
+                }
+            }
+         }
+    }
+    return listOfunLikers;
 }
 
 const viewFunc = (views, users, auth_id) => {
@@ -58,12 +73,13 @@ const matchesFunc = (matches, users, auth_id) => {
 class News extends Component {
 
     render () {
-        const { auth, views, users, likes, matches, blocks } = this.props;
+        const { auth, views, users, likes, unLikes, matches, blocks } = this.props;
         if (!auth.uid) {
             return ( <Redirect to="/signin"/> )
         } else {
-            if (likes && users && auth && matches && views && blocks) {
+            if (likes && unLikes && users && auth && matches && views && blocks) {
                 const users_likes = likeFunc(likes, users, auth.uid);
+                const users_unLikes = unLikeFunc(unLikes, users, auth.uid);
                 const users_views = viewFunc(views, users, auth.uid);
                 const users_matches = matchesFunc(matches, users, auth.uid);
                 return (
@@ -76,6 +92,7 @@ class News extends Component {
                                     <a className="nav-item nav-link active" id="nav-visit-tab" data-toggle="tab" href="#nav-visit" role="tab" aria-controls="nav-visit" aria-selected="true">Visits</a>
                                     <a className="nav-item nav-link" id="nav-like-tab" data-toggle="tab" href="#nav-like" role="tab" aria-controls="nav-like" aria-selected="false">Likes</a>
                                     <a className="nav-item nav-link" id="nav-match-tab" data-toggle="tab" href="#nav-match" role="tab" aria-controls="nav-match" aria-selected="false">Matches</a>
+                                    <a className="nav-item nav-link" id="nav-unLike-tab" data-toggle="tab" href="#nav-unLike" role="tab" aria-controls="nav-unLike" aria-selected="false">unLikes</a>
                                 </div>
                             </nav>
                             <div className="tab-content" id="nav-tabContent">
@@ -87,6 +104,9 @@ class News extends Component {
                                 </div>
                                 <div className="tab-pane fade" id="nav-match" role="tabpanel" aria-labelledby="nav-match-tab">
                                     <NewsMatches blocks={blocks} iBlocked={iBlocked} users_matches={users_matches} auth={auth} />
+                                </div>
+                                <div className="tab-pane fade" id="nav-unLike" role="tabpanel" aria-labelledby="nav-unLike-tab ">
+                                    <NewsUnLikes blocks={blocks} iBlocked={iBlocked} users_unLikes={users_unLikes} auth={auth}/>
                                 </div>
                             </div>
                         </div>
@@ -114,6 +134,7 @@ const mapStateToProps = (state) => {
     const views = state.firestore.ordered.views;
     const users = state.firestore.ordered.users;
     const likes = state.firestore.ordered.likes;
+    const unLikes = state.firestore.ordered.unLikes;
     const matches = state.firestore.ordered.matches;
     return {
         auth: auth,
@@ -121,7 +142,8 @@ const mapStateToProps = (state) => {
         users: users,
         views: views,
         matches: matches,
-        likes: likes
+        likes: likes,
+        unLikes: unLikes
     }
 }
 
@@ -132,6 +154,7 @@ export default compose(
         { collection: "blocks"},
         { collection: "views", orderBy: ["createdAt", "desc"] },
         { collection: "matches", orderBy: ["createdAt", "desc"] },
-        { collection: "likes", orderBy: ["createdAt", "desc"] }
+        { collection: "likes", orderBy: ["createdAt", "desc"] },
+        { collection: "unLikes", orderBy: ["createdAt", "desc"] }
     ])
 ) (News);

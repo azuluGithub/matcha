@@ -24,28 +24,50 @@ class NewsViewsSummary extends Component {
     }
 
     render() {
-        const { auth, user, blocks, iBlocked } = this.props;
+        const { auth, user, blocks, iBlocked, views } = this.props;
         const wasIBlocked = blocks.filter(iBlocked(user.id, auth.uid));
         const didIBlock = blocks.filter(iBlocked(auth.uid, user.id));
+        const view_user_id = views.filter(didIView(user.id, auth.uid));
+        const view_user_id_found = view_user_id[0] === undefined ? "" : view_user_id[0].view_status;  
         if (didIBlock.length > 0 || wasIBlocked.length) {
             return <div></div>
         } else {
-            return (
-                <React.Fragment>
-                    <Link  onClick={this.handleClick} style={{ textDecoration: 'none' }} to={'/viewuser/'+ user.id}>
-                        <div className="nuus-container">
-                            <div className="nuus-img">
-                                <img src={user.url} alt="img"/>
+            if (view_user_id_found === "read") {
+                return (
+                    <React.Fragment>
+                        <Link  onClick={this.handleClick} style={{ textDecoration: 'none' }} to={'/viewuser/'+ user.id}>
+                            <div className="nuus-container">
+                                <div className="nuus-img">
+                                    <img src={user.url} alt="img"/>
+                                </div>
+                                <div className="nuus-content">
+                                    <span className="nuus-name">{ user.firstname[0].toUpperCase() + user.firstname.slice(1)} { user.lastname[0].toUpperCase() + user.lastname.slice(1) } </span>
+                                    <span className="nuus-msg"> visited your profile</span>
+                                    <br/>
+                                </div>
                             </div>
-                            <div className="nuus-content">
-                                <span className="nuus-name">{ user.firstname[0].toUpperCase() + user.firstname.slice(1)} { user.lastname[0].toUpperCase() + user.lastname.slice(1) } </span>
-                                <span className="nuus-msg"> visited your profile</span>
-                                <br/>
+                        </Link>
+                    </React.Fragment>
+                )
+            } else {
+                return (
+                    <React.Fragment>
+                        <Link  onClick={this.handleClick} style={{ textDecoration: 'none' }} to={'/viewuser/'+ user.id}>
+                            <div className="nuus-container-unread">
+                                <div className="nuus-img">
+                                    <img src={user.url} alt="img"/>
+                                </div>
+                                <div className="nuus-content">
+                                    <span className="nuus-name">{ user.firstname[0].toUpperCase() + user.firstname.slice(1)} { user.lastname[0].toUpperCase() + user.lastname.slice(1) } </span>
+                                    <span className="nuus-msg"> visited your profile</span>
+                                    <br/>
+                                </div>
                             </div>
-                        </div>
-                    </Link>
-                </React.Fragment>
-            )
+                        </Link>
+                    </React.Fragment>
+                )
+            }
+
         }
     }
 }

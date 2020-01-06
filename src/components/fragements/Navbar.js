@@ -23,6 +23,22 @@ const likeFunc = (likes, users, auth_id) => {
     return count;
 }
 
+const unLikeFunc = (unLikes, users, auth_id) => {
+    let count = 0;
+    for (let i = 0; i < unLikes.length; i++) {
+         if (unLikes[i].unLiked_id === auth_id) {
+            for (let j = 0; j < users.length; j++) {
+                if (users[j].id === unLikes[i].unLiker_id) {
+                    if (unLikes[i].unLike_status === "unread") {
+                        count = count + 1;
+                    }
+                }
+            }
+         }
+    }
+    return count;
+}
+
 const viewFunc = (views, users, auth_id) => {
     let count = 0;
     for (let i = 0; i < views.length; i++) {
@@ -79,6 +95,7 @@ class Navbar extends React.Component {
         users: this.props.users,
         likes: this.props.likes,
         matches: this.props.matches,
+        unLikes: this.props.unLikes,
         chats: this.props.chats
     }
     
@@ -89,19 +106,21 @@ class Navbar extends React.Component {
         users: props.users,
         likes: props.likes,
         matches: props.matches,
+        unLikes: props.unLikes,
         chats: props.chats
       })
     }
 
     render() {
         const { sign_Out, auth } = this.props;
-        const { views, users, likes, matches, profile, chats } = this.state;
-        if (likes && users && auth && matches && views && chats ) {
+        const { views, users, likes, unLikes, matches, profile, chats } = this.state;
+        if (likes && unLikes && users && auth && matches && views && chats ) {
             const users_likes = likeFunc(likes, users, auth.uid);
             const users_views = viewFunc(views, users, auth.uid);
+            const users_unLikes = unLikeFunc(unLikes, users, auth.uid);
             const users_matches = matchesFunc(matches, users, auth.uid);
             const chat_count = chatsFunc(chats, users, auth.uid);
-            let total_count = users_likes + users_views + users_matches;
+            let total_count = users_likes + users_views + users_matches + users_unLikes;
             return (
                 <nav className="nav-ba">
                     <ul>
@@ -152,6 +171,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
     const auth = state.firebase.auth;
     const views = state.firestore.ordered.views;
+    const unLikes = state.firestore.ordered.unLikes;
     const chats = state.firestore.ordered.chats;
     const users = state.firestore.ordered.users;
     const likes = state.firestore.ordered.likes;
@@ -160,6 +180,7 @@ const mapStateToProps = (state) => {
     return {
         auth: auth,
         users: users,
+        unLikes: unLikes,
         views: views,
         chats: chats,
         matches: matches,
@@ -175,6 +196,7 @@ export default compose(
         { collection: "blocks"},
         { collection: "chats", orderBy: ["createdAt", "asc"] },
         { collection: "views", orderBy: ["createdAt", "desc"] },
+        { collection: "unLikes", orderBy: ["createdAt", "desc"] },
         { collection: "matches", orderBy: ["createdAt", "desc"] },
         { collection: "likes", orderBy: ["createdAt", "desc"] }
     ])

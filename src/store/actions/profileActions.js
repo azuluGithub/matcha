@@ -1,4 +1,4 @@
-export const createChat = (sender_message, sender_Id, receiver_Id) => {
+export const createChat = (sender_message, sender_Id, receiver_Id, chat_status) => {
     return (dispatch, getState, { getFirebase , getFirestore }) => {
         const firestore = getFirestore();
         if (sender_Id === "" || receiver_Id === "") {
@@ -8,7 +8,7 @@ export const createChat = (sender_message, sender_Id, receiver_Id) => {
                 sender_message: sender_message,
                 sender_Id: sender_Id,
                 receiver_Id: receiver_Id,
-                chat_status: "unread",
+                chat_status: chat_status,
                 createdAt: new Date(),
             }).then(() => {
                 dispatch({ type: "CREATE_CHAT" });
@@ -16,6 +16,20 @@ export const createChat = (sender_message, sender_Id, receiver_Id) => {
                 dispatch({ type: "CREATE_CHAT_ERR", err });
             })
         }
+    }
+}
+
+export const updateChatStatus = (chat_Id, chat_status) => {
+    return (dispatch, getState, { getFirebase , getFirestore }) => {
+        const firestore = getFirestore();
+        firestore.collection('chats').doc(chat_Id).update({
+            chat_status: chat_status,
+        }).then(() => {
+            dispatch({ type: "CREATE_CHAT" });
+        }).catch((err) => {
+            dispatch({ type: "CREATE_CHAT_ERR", err });
+        })
+        
     }
 }
 
@@ -131,7 +145,6 @@ export const updateViewUser = (views_id, view_status) => {
         const firestore = getFirestore();
         firestore.collection('views').doc(views_id).update({
             view_status: view_status,
-            createdAt: new Date(),
         }).then(() => {
             dispatch({ type: "VIEW_SUCCESS"});
         }).catch((error) => {
@@ -145,11 +158,23 @@ export const updateLikeUser = (likes_id, like_status) => {
         const firestore = getFirestore();
         firestore.collection('likes').doc(likes_id).update({
             like_status: like_status,
-            createdAt: new Date(),
         }).then(() => {
             dispatch({ type: "LIKES_SUCCESS"});
         }).catch((error) => {
             dispatch({ type: "LIKES_ERROR" });
+        })
+    }
+}
+
+export const updateMatchUser = (match_id, match_status) => {
+    return (dispatch, getState, { getFirebase , getFirestore }) => {
+        const firestore = getFirestore();
+        firestore.collection('matches').doc(match_id).update({
+            match_status: match_status,
+        }).then(() => {
+            dispatch({ type: "MATCHED_SUCCESS"});
+        }).catch((error) => {
+            dispatch({ type: "MATCHED_ERROR" });
         })
     }
 }
@@ -182,12 +207,25 @@ export const unLikeUser = (unLiker_id, unLiked_id, delete_id, delete_match_id) =
         return firestore.collection('unLikes').add({
             unLiker_id: unLiker_id,
             unLiked_id: unLiked_id,
-            unlike_status: "unread",
+            unLike_status: "unread",
             createdAt: new Date(),
         }).then(() => {
             firestore.collection("likes").doc(delete_id).delete()
         }).then(() => {
             firestore.collection("matches").doc(delete_match_id).delete()
+        }).then(() => {
+            dispatch({ type: "UNLIKED_SUCCESS"});
+        }).catch((error) => {
+            dispatch({ type: "UNLIKED_ERROR" });
+        })
+    }
+}
+
+export const updateUnLikeUser = (unLikes_id, unLike_status) => {
+    return (dispatch, getState, { getFirebase , getFirestore }) => {
+        const firestore = getFirestore();
+        firestore.collection('unLikes').doc(unLikes_id).update({
+            unLike_status: unLike_status,
         }).then(() => {
             dispatch({ type: "UNLIKED_SUCCESS"});
         }).catch((error) => {

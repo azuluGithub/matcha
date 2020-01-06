@@ -115,7 +115,6 @@
   margin-bottom: 10px;
 }
 
-
 /*************************** NUUS PAGE ********************/
 .nuus-page {
   margin: 90px auto;
@@ -145,8 +144,14 @@
   border: 1px solid #eee;
 }
 
+.nuus-container-unread {
+  display: flex;
+  border: 1px solid #eee;
+  background-color: gainsboro;
+}
+
 .nav-item {
-  font-size: 15px;
+  font-size: 13px;
   color: #000;
 }
 

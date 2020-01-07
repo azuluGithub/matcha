@@ -1,11 +1,9 @@
 # matcha #
 
-## this project is underConstruction. ##
-
-_it is made in JavaScript, Reactjs, Redux, Firebase and Bootstrap_
+_is made in JavaScript, Reactjs, Redux and Firebase
 
 **signup page**
-![signup image](/screenshots/signup.png)
+![signup image](/screenshots/forgot and registration)
 
 
 **user profile page**

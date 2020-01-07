@@ -3,7 +3,7 @@
 _is made in JavaScript, Reactjs, Redux and Firebase
 
 **signup page**
-![signup image](/screenshots/forgot and registration)
+![signup image](/screenshots/forgot and registration.png)
 
 
 **user profile page**

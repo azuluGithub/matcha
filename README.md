@@ -21,4 +21,4 @@ _it is made in JavaScript, Reactjs, Redux, Firebase and Bootstrap_
 
 
 **notifications**
-![notification image](/screenshots/notification.png)
+![notification image](/screenshots/notifications.png)

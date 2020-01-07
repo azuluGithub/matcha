@@ -5,7 +5,7 @@
 _it is made in JavaScript, Reactjs, Redux, Firebase and Bootstrap_
 
 **signup page**
-![signup image](/screenshots/signup.png)
+![signup image](/screenshots/registration.png)
 
 
 **user profile page**

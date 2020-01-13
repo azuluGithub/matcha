@@ -14,6 +14,7 @@ import Profile from './components/profile/Profile';
 import Update from './components/profile/editSidebar/Update';
 import 'tachyons';
 import ChatList from './components/chat/ChatList';
+import Upload from './components/profile/editSidebar/Upload';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path="/chatlist/:id" component={ChatList} />
             <Route path="/profile" component={Profile} />
             <Route path="/update/:id" component={Update} />
+            <Route path="/upload/:id" component={Upload} />
           </Switch>
       </div>
     </BrowserRouter>

@@ -14,7 +14,7 @@ import { compose } from 'redux';
 import Navbar from '../fragements/Navbar';
 import Footer from '../fragements/Footer';
 import ImageUpLoad from './ImageUpLoad';
-import UpdateSummary from '../profile/editSidebar/UpdateSummary'
+import UpdateSummary from '../profile/editSidebar/UpdateSummary';
 
 const isSearchSexPref = (sexPref) => (user) => {
     return !sexPref || user.gender.toLowerCase() === sexPref.toLowerCase();
@@ -113,36 +113,36 @@ class DashBoard extends React.Component {
     }
 
     handleChange = (event) => {
-        const { name, value } = event.target;
-        this.setState({ [ name ] : value })
+      const { name, value } = event.target;
+      this.setState({ [ name ] : value })
     }
 
     handleSubmit = (event) => {
-        event.preventDefault();
-        this.props.createProfile(this.state);
+      event.preventDefault();
+      this.props.createProfile(this.state);
     }
 
     handleEmailSubmit = (event) => {
-        event.preventDefault();
-        this.props.updateUserEmail(this.state);
+      event.preventDefault();
+      this.props.updateUserEmail(this.state);
     }
 
     handlePasswordSubmit = (event) => {
-        event.preventDefault();
-        this.props.updateUserPassword(this.state);
+      event.preventDefault();
+      this.props.updateUserPassword(this.state);
     }
 
     onDeleteTag = (tag) => {
-        var tags = this.state.tags.filter((t) => {
-          return (t !== tag);
-        });
-        this.setState({
-          tags: tags
-        });
+      var tags = this.state.tags.filter((t) => {
+        return (t !== tag);
+      });
+      this.setState({
+        tags: tags
+      });
     }
 
     handleImageUpload = (e) => {
-        if (e.target.files[0]) {
+      if (e.target.files[0]) {
           const image = (e.target.files[0]);
           const uploadTask = storage.ref(`images/${image.name}`).put(image);
             uploadTask.on('state_changed',
@@ -160,7 +160,7 @@ class DashBoard extends React.Component {
                   })
                 })
             })
-        }
+      }
     }
 
     handleImageUpload1 = (e) => {

@@ -70,6 +70,11 @@ class EditContent extends Component {
                         Edit profile
                     </div>
                 </Link>
+                <Link style={{ textDecoration: 'none' }} to={'/upload/'+ auth.uid}>
+                    <div className="update-profile">
+                        Upload pics
+                    </div>
+                </Link>
             </div>
             <div className="logged-visits">
                 <div className="logged-details">

@@ -245,6 +245,14 @@ body {
         left: 60%;
         transform: translate(-50%, -50%);
     }
+    .update-profile {
+        margin-right: 10px;
+        height: 25px;
+        margin-top: 15px;
+        padding: 1px 5px 1px 5px;
+        border-radius: 10px;
+        font-size: small;
+    }
 }
 
 /*

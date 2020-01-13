@@ -3,7 +3,32 @@
     padding: 0;
 }
 
-/*&***************************** scollbar **********************/
+.dashboard-page {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top: 90px;
+  margin-bottom: 20px;
+}
+
+.dashboard-upload {
+  width: 40%;
+}
+
+@media only screen and (max-width: 640px) {
+  .dashboard-upload {
+      width: 90%;
+  }
+}
+
+.dashboard-main {
+  border: 5px solid dimgray;
+  padding: 20px 10px;
+  margin-bottom: 5px;
+  background-color: pink;
+}
+
+/****************************** scollbar **********************/
 
 .my_scrollable {
   height: 200px;

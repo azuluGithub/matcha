@@ -32,7 +32,7 @@ class NewsMatchesSummary extends Component {
         const match_auth_id_found = match_auth_id[0] === undefined ? "" : match_auth_id[0].match_status;
         const match_user_id_found = match_user_id[0] === undefined ? "" : match_user_id[0].match_status;
     
-        if (didIBlock.length > 0 || wasIBlocked.length) {
+        if (didIBlock.length > 0 || wasIBlocked.length > 0) {
             return <div></div>
         } else {
             if (match_user_id_found === "read" || match_auth_id_found === "read") {

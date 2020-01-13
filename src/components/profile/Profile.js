@@ -16,13 +16,17 @@ import Navbar from '../fragements/Navbar';
 class Profile extends Component {
   
   state = {
-    firstname : this.props.profile.firstname,
-    lastname : this.props.profile.lastname,
-    username : this.props.profile.username,
+    firstname: this.props.profile.firstname,
+    lastname: this.props.profile.lastname,
+    username: this.props.profile.username,
     tags: this.props.profile.tags,
     bio: this.props.profile.bio,
     age: this.props.profile.age,
-    url : this.props.profile.url,
+    url: this.props.profile.url,
+    url1: this.props.profile.url1,
+    url2: this.props.profile.url2,
+    url3: this.props.profile.url3,
+    url4: this.props.profile.url4,
     gender: this.props.profile.gender,
     sexPref: this.props.profile.sexPref,
     email: this.props.auth.email,
@@ -32,13 +36,17 @@ class Profile extends Component {
   
 UNSAFE_componentWillReceiveProps = (props) => {
     this.setState({
-      firstname : props.profile.firstname,
-      lastname : props.profile.lastname,
-      username : props.profile.username,
+      firstname: props.profile.firstname,
+      lastname: props.profile.lastname,
+      username: props.profile.username,
       tags: props.profile.tags,
       bio: props.profile.bio,
       age: props.profile.age,
-      url : props.profile.url,
+      url: props.profile.url,
+      url1: props.profile.url1,
+      url2: props.profile.url2,
+      url3: props.profile.url3,
+      url4: props.profile.url4,
       gender: props.profile.gender,
       sexPref: props.profile.sexPref,
       email: props.auth.email,
@@ -128,7 +136,7 @@ UNSAFE_componentWillReceiveProps = (props) => {
         return <Redirect to="/signin"/>
     } else {
       if (likes && users && views && matches && blocks) {
-        const { lati, long, firstname, lastname, username, email, gender, sexPref, age, bio, tags, url } = this.state;
+        const { lati, long, firstname, lastname, username, email, gender, sexPref, age, bio, tags, url, url1, url2, url3, url4 } = this.state;
         return (
                   <div>
                     <Navbar/>
@@ -143,6 +151,10 @@ UNSAFE_componentWillReceiveProps = (props) => {
                             bio={bio}
                             tags={tags}
                             url={url}
+                            url1={url1}
+                            url2={url2}
+                            url3={url3}
+                            url4={url4}
                             handleImageUpload={this.handleImageUpload}
                             lati={lati}
                             long={long}

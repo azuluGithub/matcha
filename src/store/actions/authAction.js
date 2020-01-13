@@ -87,7 +87,7 @@ export const signUp = (newUser) => {
                         firstname: newUser.firstname,
                         lastname: newUser.lastname,
                         username: newUser.username,
-                        gender: "male",
+                        gender: "",
                         sexPref: "",
                         age: 18,
                         bio: "",
@@ -100,6 +100,10 @@ export const signUp = (newUser) => {
                         loggedIn: "",
                         time: new Date(),
                         url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm2hIJK-htqNGFQUUtshHh934Z_J3CDlSe9H7UHLWln9by7CoS",
+                        url1: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm2hIJK-htqNGFQUUtshHh934Z_J3CDlSe9H7UHLWln9by7CoS",
+                        url2: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm2hIJK-htqNGFQUUtshHh934Z_J3CDlSe9H7UHLWln9by7CoS",
+                        url3: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm2hIJK-htqNGFQUUtshHh934Z_J3CDlSe9H7UHLWln9by7CoS",
+                        url4: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm2hIJK-htqNGFQUUtshHh934Z_J3CDlSe9H7UHLWln9by7CoS",
                     })
                 })
             })

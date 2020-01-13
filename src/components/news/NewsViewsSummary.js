@@ -29,7 +29,7 @@ class NewsViewsSummary extends Component {
         const didIBlock = blocks.filter(iBlocked(auth.uid, user.id));
         const view_user_id = views.filter(didIView(user.id, auth.uid));
         const view_user_id_found = view_user_id[0] === undefined ? "" : view_user_id[0].view_status;  
-        if (didIBlock.length > 0 || wasIBlocked.length) {
+        if (didIBlock.length > 0 || wasIBlocked.length > 0) {
             return <div></div>
         } else {
             if (view_user_id_found === "read") {

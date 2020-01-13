@@ -16,14 +16,14 @@ class ProfileMap extends Component {
     const actual_position = [this.props.lati, this.props.long];
     const position =  this.props.lati ? actual_position : made_position;
       return (
-        <Map style={{height:"50vh",zIndex:"-1"}} center={position} zoom="12">
+        <Map style={{height:"50vh",zIndex:"-1"}} center={position} zoom="14">
           <TileLayer
             attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
          
           <Marker position={position} icon={myIcon} >
-            <Popup> Just a pop-up. <br /> nothing serious!!.</Popup>
+            <Popup> Just a pop-up. nothing serious!!</Popup>
           </Marker>
         </Map>
       )

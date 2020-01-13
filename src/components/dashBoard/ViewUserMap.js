@@ -14,7 +14,7 @@ class ViewUserMap extends Component {
   render() {
     const position = [this.props.lati, this.props.long]
       return (
-        <Map style={{height:"50vh",zIndex:"-1"}} center={position} zoom="14">
+        <Map style={{height:"50vh",zIndex:"-1"}} center={position} zoom="15">
           <TileLayer
             attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

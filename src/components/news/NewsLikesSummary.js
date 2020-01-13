@@ -34,7 +34,7 @@ class NewslikesSummary extends Component {
         const like_user_id = likes.filter(like_notify(user.id, auth.uid));
         const like_user_id_found = like_user_id[0] === undefined ? "" : like_user_id[0].like_status;
         
-        if (didIBlock.length > 0 || wasIBlocked.length) {
+        if (didIBlock.length > 0 || wasIBlocked.length > 0) {
             return <div></div>
         } else {
             if (like_user_id_found === "read") {

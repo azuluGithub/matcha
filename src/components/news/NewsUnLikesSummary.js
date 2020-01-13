@@ -24,7 +24,7 @@ class NewsUnLikesSummary extends Component {
         const unLike_user_id = unLikes.filter(unLike_notify(user.id, auth.uid));
         const unLike_user_id_found = unLike_user_id[0] === undefined ? "" : unLike_user_id[0].unLike_status;
         
-        if (didIBlock.length > 0 || wasIBlocked.length) {
+        if (didIBlock.length > 0 || wasIBlocked.length > 0) {
             return <div></div>
         } else {
             if (unLike_user_id_found === "read") {

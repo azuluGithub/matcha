@@ -21,11 +21,15 @@ const matchesFunc = (matches, users, auth_id) => {
     return listOfMatches;
 }
 
+const iBlocked = (blocker_id, blocked_id) => (block) => {
+    return block.blocker_id === blocker_id && block.blocked_id === blocked_id;
+}
+
 class Matches extends Component {
 
     render() {
-        const { users, matches, auth } = this.props;
-        if (users && matches) {
+        const { users, matches, auth, blocks } = this.props;
+        if (users && matches && blocks) {
             const users_matches = matchesFunc(matches, users, auth.uid);
             return (
                 <div>
@@ -34,6 +38,8 @@ class Matches extends Component {
                     <span className="vuid_name">{ "Chats" } </span><hr/><br/>
                         <ScrollBar>
                             <MatchesDetails
+                                blocks={blocks}
+                                iBlocked={iBlocked}
                                 users_matches={users_matches}
                                 auth={this.props.auth}
                             />
@@ -61,6 +67,7 @@ const mapStateToProps = (state) => {
         auth: state.firebase.auth,
         users: state.firestore.ordered.users,
         matches: state.firestore.ordered.matches,
+        blocks: state.firestore.ordered.blocks
     }
 }
 
@@ -68,6 +75,7 @@ export default compose(
     connect(mapStateToProps),
     firestoreConnect([
         { collection: "users" },
+        { collection: "blocks"},
         { collection: "matches", orderBy: ["createdAt", "asc"] }
     ])
 )(Matches);

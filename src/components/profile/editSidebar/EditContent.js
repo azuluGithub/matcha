@@ -55,7 +55,7 @@ const likeFunc = (likes, users, auth_id) => {
 
 class EditContent extends Component {
   render() {
-    let { blocks, auth, likes, matches, views, users, tags, lati, long, handleImageUpload, url, bio, gender, sexPref, age, firstname, lastname, username, email } = this.props;
+    let { blocks, auth, likes, matches, views, users, tags, lati, long, handleImageUpload, url, url1, url2, url3, url4, bio, gender, sexPref, age, firstname, lastname, username, email } = this.props;
     const users_likes = likeFunc(likes, users, auth.uid);
     const users_views = viewFunc(views, users, auth.uid);
     const users_matches = matchesFunc(matches, users, auth.uid);
@@ -94,6 +94,12 @@ class EditContent extends Component {
                             return <span className="vuid_tag" key={tag}> { tag }</span>
                             })
                         }
+                    </div>
+                    <div className="profile-urls">
+                        <img src={ `${url1}` } alt="img"/>
+                        <img src={ `${url2}` } alt="img"/>
+                        <img src={ `${url3}` } alt="img"/>
+                        <img src={ `${url4}` } alt="img"/>
                     </div>
                 </div>
                 <div className="visit-history">

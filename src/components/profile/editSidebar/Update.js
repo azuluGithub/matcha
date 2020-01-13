@@ -25,7 +25,7 @@ class Update extends Component {
         email: this.props.auth.email,
   }
 
-    componentWillReceiveProps = (props) => {
+    UNSAFE_componentWillReceiveProps = (props) => {
         this.setState({
             tags: props.profile.tags,
             firstname : props.profile.firstname,
@@ -120,21 +120,21 @@ class Update extends Component {
         } else {
             return <div>
                     <Navbar/>
-                    <div className="update-page">
-                        <UpdateSummary
-                            tags={tags}
-                            onDeleteTag={onDeleteTag}
-                            handleChange={handleChange}
-                            handleSubmit={handleSubmit}
-                            handlePasswordSubmit={handlePasswordSubmit}
-                            handleEmailSubmit={handleEmailSubmit}
-                            onKeyUp={onKeyUp}
-                            invalid_input={invalid_input}
-                            update_email_err = {update_email_err}
-                            update_password_err = {update_password_err}
-                            update_profile_err = {update_profile_err}
-                        />
-                    </div>
+                        <div className="update-page">
+                            <UpdateSummary
+                                tags={tags}
+                                onDeleteTag={onDeleteTag}
+                                handleChange={handleChange}
+                                handleSubmit={handleSubmit}
+                                handlePasswordSubmit={handlePasswordSubmit}
+                                handleEmailSubmit={handleEmailSubmit}
+                                onKeyUp={onKeyUp}
+                                invalid_input={invalid_input}
+                                update_email_err = {update_email_err}
+                                update_password_err = {update_password_err}
+                                update_profile_err = {update_profile_err}
+                            />
+                        </div>
                     <Footer/>
                 </div>
         }

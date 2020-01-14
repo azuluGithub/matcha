@@ -73,14 +73,13 @@ class DashBoard extends React.Component {
             url3 : props.profile.url3,
             url4 : props.profile.url4,
             tags: props.profile.tags,
-            city: props.profile.city,
+            //city: props.profile.city,
             firstname : props.profile.firstname,
             lastname : props.profile.lastname,
             username : props.profile.username,
             bio: props.profile.bio,
             age: props.profile.age,
             gender: props.profile.gender,
-            //sexPref: props.profile.sexPref,
             email: props.auth.email
         })
     }

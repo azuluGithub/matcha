@@ -14,7 +14,7 @@ body {
 .profile-cover {
     margin-top: 56px;
     position: relative;
-    height: calc(46vh);
+    height: calc(35vh);
     background:
     radial-gradient(black 15%, transparent 16%) 0 0,
     radial-gradient(black 15%, transparent 16%) 8px 8px,
@@ -28,9 +28,9 @@ body {
     position: absolute;
     top: 90%;
     left: 25%;
-    width: 200px;
-    height: 200px;
-    border-radius: 100px;
+    width: 240px;
+    height: 240px;
+    border-radius: 120px;
     border: 5px solid #fff;
     transform: translate(-50%, -50%);
 }
@@ -61,6 +61,10 @@ body {
     padding: 1px 10px 0px 10px;
     border-radius: 20px;
     cursor: pointer;
+}
+
+.update-profile:hover {
+    background-color: rgb(236, 177, 177);
 }
 
 .profile-pic {

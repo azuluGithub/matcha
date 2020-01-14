@@ -5,7 +5,8 @@ import NewsVisits from '../profileNews/NewsVisits';
 import NewsLikes from '../profileNews/NewsLikes';
 import ScrollBar from '../../../ScrollBar';
 import { Link } from 'react-router-dom';
-import { FaEnvelope, FaUser, FaTags, FaHeart, FaVenusMars, FaHistory } from "react-icons/fa";
+import  firebase from '../../../config/fbConfig';
+import { FaEnvelope, FaPencilAlt, FaArrowCircleUp, FaUser, FaTags, FaHeart, FaVenusMars, FaHistory } from "react-icons/fa";
 
 const iBlocked = (blocker_id, blocked_id) => (block) => {
     return block.blocker_id === blocker_id && block.blocked_id === blocked_id;
@@ -39,7 +40,7 @@ const likeFunc = (likes, users, auth_id) => {
     return listOfViews;
   }
 
-  const matchesFunc = (matches, users, auth_id) => {
+const matchesFunc = (matches, users, auth_id) => {
     const listOfMatches = [];
     for (let i = 0; i < matches.length; i++) {
          if (matches[i].liker_id === auth_id || matches[i].liked_id === auth_id) {
@@ -51,10 +52,41 @@ const likeFunc = (likes, users, auth_id) => {
          }
     }
     return listOfMatches;
-  }
+}
 
 class EditContent extends Component {
-  render() {
+
+    state = {
+        show: false  
+    };
+
+    closeReportPopUp = () => {
+        this.setState({
+            show: false
+        })
+    }
+
+    handleCity = (event) => {
+        fetch('https://ipapi.co/json')
+        .then(res => res.json())
+        .then(location => {
+            var user = firebase.auth().currentUser;
+            var res = firebase.firestore().collection('users').doc(user.uid);
+            res.update({
+                lati: location.latitude,
+                long: location.longitude,
+                city: location.city,
+            })
+        })
+        .then(() => {
+            this.setState({ show: true })
+        })
+        .catch((e) => {
+            console.log(e);
+        })
+    }
+
+render() {
     let { blocks, auth, likes, matches, views, users, tags, lati, long, handleImageUpload, url, url1, url2, url3, url4, bio, gender, sexPref, age, firstname, lastname, username, email } = this.props;
     const users_likes = likeFunc(likes, users, auth.uid);
     const users_views = viewFunc(views, users, auth.uid);
@@ -65,14 +97,26 @@ class EditContent extends Component {
                 <img src={ `${url}` } alt="img"/>
             </div>
             <div className="under-cover">
+                <button type="button" className="update-profile" onClick={this.handleCity}>
+                    <FaPencilAlt/> city
+                </button>
+                {
+                     this.state.show === true ? <div id="myModal" className="modal">
+                        <div className="modal-content">
+                            <span onClick={this.closeReportPopUp} className="close">&times;</span>
+                            <p>Your location was successfully updated</p>
+                        </div>
+                    </div>
+                    : ""
+                }
                 <Link style={{ textDecoration: 'none' }} to={'/update/'+ auth.uid}>
                     <div className="update-profile">
-                        Edit profile
+                        <FaPencilAlt/> prof
                     </div>
                 </Link>
                 <Link style={{ textDecoration: 'none' }} to={'/upload/'+ auth.uid}>
                     <div className="update-profile">
-                        Upload pics
+                        < FaArrowCircleUp/> pics
                     </div>
                 </Link>
             </div>

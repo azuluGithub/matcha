@@ -60,6 +60,7 @@ body {
     color: maroon;
     padding: 1px 10px 0px 10px;
     border-radius: 20px;
+    cursor: pointer;
 }
 
 .profile-pic {
@@ -246,12 +247,11 @@ body {
         transform: translate(-50%, -50%);
     }
     .update-profile {
-        margin-right: 10px;
+        margin-right: 5px;
         height: 25px;
         margin-top: 15px;
-        padding: 1px 5px 1px 5px;
         border-radius: 10px;
-        font-size: small;
+        font-size: smaller;
     }
 }
 

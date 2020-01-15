@@ -3,7 +3,7 @@ import Content from '../sidebar/Content';
 
 class UserProfile extends Component {
     render() {
-        const { isSortAge, sexPref, searchedTag, ageRange, popularityRange, users, city, isSearchedcity, isSearchedAge, /*isSearchgender,*/ isSearchSexPref, isSearchedPopularity, isSearchedTag } = this.props;
+        const { isSortPopularity, isSortAge, sortValue, sexPref, searchedTag, ageRange, popularityRange, users, city, isSearchedcity, isSearchedAge, /*isSearchgender,*/ isSearchSexPref, isSearchedPopularity, isSearchedTag } = this.props;
         return (
             <div className="main-content-container">
                 <div className="dash-content-container">
@@ -13,7 +13,8 @@ class UserProfile extends Component {
                         .filter(isSearchedcity(city))
                         .filter(isSearchedAge(ageRange))
                         .filter(isSearchedPopularity(popularityRange))
-                        .sort(isSortAge())
+                        .sort(isSortAge(sortValue))
+                        .sort(isSortPopularity(sortValue))
                         .map(user => <Content key={user.id} user={user}/>)
                     }
                 </div>

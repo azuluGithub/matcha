@@ -37,8 +37,12 @@ const isSearchedPopularity = (popularityRange) => (user) => {
 }
 
 /************************** SORT ********************/
-const isSortAge = () => (user) => {
-  return user;
+const isSortAge = (sortValue)  => (person1, person2) => {
+  return sortValue === "age" ? person1.age - person2.age : "";
+}
+
+const isSortPopularity = (sortValue)  => (person1, person2) => {
+  return sortValue === "popularity" ? person1.popularity - person2.popularity : "";
 }
 /***************************************************/
 
@@ -52,20 +56,22 @@ class DashBoard extends React.Component {
         sexPref: "",
         city: "",
         invalid_input: "",
-        url : this.props.profile.url,
-        url1 : this.props.profile.url1,
-        url2 : this.props.profile.url2,
-        url3 : this.props.profile.url3,
-        url4 : this.props.profile.url4,
+        url: this.props.profile.url,
+        url1: this.props.profile.url1,
+        url2: this.props.profile.url2,
+        url3: this.props.profile.url3,
+        url4: this.props.profile.url4,
         tags: this.props.profile.tags,
-        firstname : this.props.profile.firstname,
-        lastname : this.props.profile.lastname,
-        username : this.props.profile.username,
+        firstname: this.props.profile.firstname,
+        lastname: this.props.profile.lastname,
+        username: this.props.profile.username,
         bio: this.props.profile.bio,
         age: this.props.profile.age,
         gender: this.props.profile.gender,
         //sexPref: this.props.profile.sexPref,
         email: this.props.auth.email,
+        sortValue: "",
+
     }
 
     UNSAFE_componentWillReceiveProps(props) {
@@ -258,7 +264,7 @@ class DashBoard extends React.Component {
     }
 
     render() {
-        const { tags, invalid_input } = this.state;
+        const { tags, invalid_input, sortValue} = this.state;
         const { auth, update_email_err, update_password_err, update_profile_err } = this.props;
         const { handleEmailSubmit, onKeyUp, handleChange, handleSubmit, handlePasswordSubmit, onDeleteTag } = this;
         if (!auth.uid) {
@@ -306,6 +312,8 @@ class DashBoard extends React.Component {
                             sexPref={sexPref}
                         />
                         <UserProfile
+                            sortValue={sortValue}
+                            isSortPopularity={isSortPopularity}
                             isSortAge={isSortAge}
                             searchedTag={searchedTag}
                             ageRange={ageRange}

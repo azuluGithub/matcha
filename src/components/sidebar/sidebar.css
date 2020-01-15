@@ -20,14 +20,27 @@ body {
     display: flex;
     flex-wrap: wrap;
     width: 100vw;
-    background-color: rgba(0,0,0,.4);
+    background-color: #eee;
+    /*background-color: rgba(0,0,0,.4);
     background-image:
     repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
     repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
-    linear-gradient(60deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
-    linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
+    linear-gradient(60deg, #aaa 25%, transparent 25%, transparent 75%, #aaa 75%, #aaa),
+    linear-gradient(120deg, #aaa 25%, transparent 25%, transparent 75%, #aaa 75%, #aaa);
     background-size: 70px 120px;
-  box-shadow: 0 5px 5px -5px dimgray;
+    box-shadow: 0 5px 5px -5px dimgray;*/
+}
+
+.main-filter2 {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100vw;
+    background-color: #ddd;
+    /*background:
+    linear-gradient(135deg, #aaa 21px, #ccc 22px, #ccc 24px, transparent 24px, transparent 67px, #ccc 67px, #ccc 69px, transparent 69px),
+    linear-gradient(225deg, #aaa 21px, #ccc 22px, #ccc 24px, transparent 24px, transparent 67px, #ccc 67px, #ccc 69px, transparent 69px)0 64px;
+    background-color:#aaa;
+    background-size: 64px 128px;*/
 }
 
 .filter-section {
@@ -55,6 +68,7 @@ body {
 
 .main-content-container {
     margin-top: 20px;
+    margin-bottom: 30px;
 }
 
 .dash-content-container {

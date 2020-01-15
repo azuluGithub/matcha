@@ -76,6 +76,10 @@ li a:hover {
   font-size: 18px;
 }
 
+.nav-ba .nav-logout {
+  color: red;
+}
+
 @media only screen and (max-width: 600px) {
     ul {
         font-size: 13px;
@@ -108,6 +112,20 @@ li a:hover {
 
 /********************************************** footer *******************************/
 .foota {
+  left: 0;
+  bottom: 0;
+  position: fixed;
+  box-shadow: 0 -5px 5px -5px dimgray;
+  width: 100%;
+  color: #111;
+  text-align: center;
+  line-height:2em;
+  font-size: 14px;
+  background-color: #fff;
+  font-family: "Source Sans Pro",HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+}
+
+.footer_ {
   left: 0;
   bottom: 0;
   box-shadow: 0 -5px 5px -5px dimgray;
@@ -178,7 +196,30 @@ li a:hover {
   radial-gradient(circle closest-side at 50% 35%, #d35 30%, rgba(221,51,85,0) 31%) 50px 50px;
   background-color:#b03;
   background-size:100px 100px;
-	width: 100%;
+  width: 100%;
+}
+
+.signup-cover-bottom {
+  background-color: rgb(197, 195, 195);
+  padding: 50px 20px 40px 20px;
+}
+
+.signup-msg1 {
+  color: #000;
+  font-size: large;
+  text-align: center;
+}
+
+.signup-msg2 {
+  color:rgb(209, 207, 207);
+  font-size: small;
+}
+
+.signup-cover-bottom2 {
+  background-color: rgb(92, 91, 91);
+  color: white;
+  font-size: smaller;
+  padding: 50px 20px 20px 20px;
 }
 
 .msg-signup {
@@ -186,7 +227,11 @@ li a:hover {
 }
 
 .forgot-cover {
-	height: 100vh;
+	height: calc(100vh - 70px);
+}
+
+.forgot-cover .forms-container {
+	margin-top: 60px;
 }
 
 .form-forgot {

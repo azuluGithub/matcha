@@ -36,6 +36,12 @@ const isSearchedPopularity = (popularityRange) => (user) => {
     return /*!popularityRange ||*/ user.popularity >= popularityRange;
 }
 
+/************************** SORT ********************/
+const isSortAge = () => (user) => {
+  return user;
+}
+/***************************************************/
+
 class DashBoard extends React.Component {
 
     state = {
@@ -300,6 +306,7 @@ class DashBoard extends React.Component {
                             sexPref={sexPref}
                         />
                         <UserProfile
+                            isSortAge={isSortAge}
                             searchedTag={searchedTag}
                             ageRange={ageRange}
                             popularityRange={popularityRange}

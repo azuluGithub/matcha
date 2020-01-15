@@ -149,14 +149,36 @@ class Navbar extends React.Component {
                             </NavLink>
                         </li>
                         <li>
-                            <Link style={{color:"red"}} onClick={sign_Out} to="/signin"><span className="nav-tags">< FaPowerOff/></span></Link>
+                            <Link className="nav-logout" onClick={sign_Out} to="/signin"><span className="nav-tags">< FaPowerOff/></span></Link>
                         </li>
                     </ul>
                 </nav>
             )
         } else {
             return (
-                <div></div>
+                <nav className="nav-ba">
+                    <ul>
+                        <li><NavLink className="logo-matcha" to="/">Matcha</NavLink></li>
+                        <li>
+                            <NavLink to="/profile" className="nav-img">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm2hIJK-htqNGFQUUtshHh934Z_J3CDlSe9H7UHLWln9by7CoS" alt="img" className="rounded-circle"/>
+                                <span className="nav-name">{ } { profile.username }</span>
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/"><span className="nav-tags"><FaHouseDamage/></span></NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/chat"><span className="nav-tags"><FaFacebookMessenger/></span></NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/news"><span className="nav-tags"><FaRegBell/></span></NavLink>
+                        </li>
+                        <li>
+                            <Link className="nav-logout" onClick={sign_Out} to="/signin"><span className="nav-tags">< FaPowerOff/></span></Link>
+                        </li>
+                    </ul>
+                </nav>
             );
         }
     }

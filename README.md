@@ -1,8 +1,8 @@
 # matcha #
 
-[click here!](https://matcha-e48de.firebaseapp.com/)
+[click here!](https://matcha-e48de.firebaseapp.com/) to go to site
 
-_Stack: JavaScript, Reactjs, Redux and Firebase
+_Stack: JavaScript, Reactjs, Redux and Firebase_
 
 **signup page**
 ![signup image](/screenshots/registration.png)
